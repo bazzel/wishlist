@@ -16,3 +16,26 @@ require('channels');
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap/dist/js/bootstrap';
+import 'daemonite-material/js/material';
+
+$(document).on('turbolinks:load', function() {
+  $(
+    '.floating-label .custom-select, .floating-label .form-control',
+  ).floatinglabel();
+
+  $('body').tooltip({
+    selector: '[data-toggle="tooltip"]',
+    container: 'body',
+  });
+
+  $('body').popover({
+    selector: '[data-toggle="popover"]',
+    container: 'body',
+    html: true,
+    trigger: 'hover',
+  });
+});
+
+$(document).on('ajax:before', function() {
+  $('.tooltip').tooltip('dispose');
+});
