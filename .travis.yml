@@ -3,3 +3,4 @@ rvm:
   - 2.6.5
 script:
   - bin/rails ci
+cache: bundler
