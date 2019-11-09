@@ -1,5 +1,7 @@
 # Wishlist
 
+[![Build Status](https://travis-ci.org/bazzel/wishlist.svg?branch=master)](https://travis-ci.org/bazzel/wishlist)
+
 ## Running tests
 
     bin/rails ci
