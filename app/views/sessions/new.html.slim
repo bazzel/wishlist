@@ -1,0 +1,9 @@
+.sign-in.align-items-center
+  .card.shadow-none.p-4
+    .card-body
+      h1.card-title= t('.title')
+
+      = simple_form_for(@user, url: sign_in_path) do |f|
+        = f.input :email
+        = f.submit
+

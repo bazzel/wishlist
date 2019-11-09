@@ -1,0 +1,9 @@
+nl:
+  helpers:
+    submit:
+      user:
+        create: 'Meld aan'
+
+  sessions:
+    new:
+      title: 'Log eenvoudig in met je e-mailadres'
