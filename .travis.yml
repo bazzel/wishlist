@@ -4,3 +4,5 @@ rvm:
 script:
   - bin/rails ci
 cache: bundler
+services:
+  - postgresql

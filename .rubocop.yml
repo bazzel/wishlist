@@ -23,6 +23,5 @@ AllCops:
     - 'script/**/*'
     - 'spec/**/*'
     - 'test/**/*'
-    - 'vendor/bundle/**/*'
     - 'Gemfile'
     - 'Rakefile'
