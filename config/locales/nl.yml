@@ -2,8 +2,8 @@ nl:
   helpers:
     submit:
       user:
-        create: 'Meld aan'
+        create: 'Aanmelden'
 
   sessions:
     new:
-      title: 'Log eenvoudig in met je e-mailadres'
+      title: 'Aanmelden bij %{app_name}'

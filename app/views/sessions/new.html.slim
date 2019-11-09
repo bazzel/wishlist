@@ -1,9 +1,7 @@
-.sign-in.align-items-center
-  .card.shadow-none.p-4
-    .card-body
-      h1.card-title= t('.title')
+.sign-in
+  h1.card-title= t('.title', app_name: app_name)
 
-      = simple_form_for(@user, url: sign_in_path) do |f|
-        = f.input :email
-        = f.submit
+  = simple_form_for(@user, url: sign_in_path, wrapper: :vertical_form ) do |f|
+    = f.input :email, autofocus: true, label: false
+    = f.submit t('helpers.submit.user.create'), class: 'btn btn-primary btn-block'
 
