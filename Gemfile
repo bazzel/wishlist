@@ -36,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop-rspec'
+  gem 'rubocop-performance'
 end
 
 group :development do
