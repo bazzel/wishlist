@@ -12,8 +12,6 @@ require:
   - rubocop-rails
 
 AllCops:
-  Include:
-    - rubocop-rspec
   Exclude:
     - 'bin/**/*'
     - 'config/**/*'
