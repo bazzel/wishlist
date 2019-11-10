@@ -15,5 +15,5 @@ end
 
 Then('I see a page with instructions for {string} how to login') do |email|
   expect(page).to have_text('Controleer je e-mail')
-  expect(page).to have_text("We hebben een speciale link gemaild naar #{email}. Klik op de link in de e-mail om van start te kunnen gaan.")
+  expect(page).to have_text("We hebben een speciale link gemaild naar #{email}. Klik op de link in de e-mail om van start te kunnen gaan.") # rubocop:disable Metrics/LineLength
 end
