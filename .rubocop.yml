@@ -17,6 +17,7 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
     - 'db/**/*'
+    - 'features/step_definitions/email_steps.rb'
     - 'lib/tasks/**/*'
     - 'node_modules/**/*'
     - 'script/**/*'

@@ -3,7 +3,7 @@
     .card
       h1.h3.card-header= t('.title', app_name: app_name)
       .card-body
-        p= t('.body')
+        p.card-text= t('.body')
         = simple_form_for(@user, url: sign_in_path) do |f|
           = f.input :email, autofocus: true, label: false
           = f.submit t('helpers.submit.user.create'), class: 'btn btn-primary'

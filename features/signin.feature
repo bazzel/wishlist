@@ -11,11 +11,10 @@ Feature:
     When I navigate to the welcome page
     Then I'm being redirected to the sign in page
 
-  @todo
+  @wip
   Scenario: Sign in with a valid email address
     Given I am on the Sign in page
-    And I fill in "Email" with "john.doe@example.org"
-    And I click "Sign in"
+    When I sign up with my email address "john.doe@example.org"
     Then "john.doe@example.org" should receive an email
     And I see a page with instructions for "john.doe@example.org" how to login
 
@@ -43,5 +42,3 @@ Feature:
     And I fill in "Email" with "john.doe"
     And I click "Sign in"
     Then I see an error telling me I have entered an invalid email address
-
-
