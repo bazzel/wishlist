@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  render_views
-
   describe 'GET #new' do
     def do_get
       get :new
