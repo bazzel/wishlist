@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+#:nodoc:
 class ApplicationController < ActionController::Base
   before_action :require_sign_in
 

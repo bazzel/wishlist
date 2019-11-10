@@ -21,7 +21,6 @@ AllCops:
     - 'lib/tasks/**/*'
     - 'node_modules/**/*'
     - 'script/**/*'
-    - 'spec/**/*'
     - 'test/**/*'
     - 'vendor/bundle/**/*'
     - 'Gemfile'
