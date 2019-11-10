@@ -17,7 +17,6 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
     - 'db/**/*'
-    - 'features/**/*'
     - 'lib/tasks/**/*'
     - 'node_modules/**/*'
     - 'script/**/*'

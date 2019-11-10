@@ -3,12 +3,10 @@ Feature:
   I can log in
   so I can do authorized tasks
 
-  @wip
   Scenario: Show the sign in page
     When I open the application
     Then I see the sign in page
 
-  @todo
   Scenario: Redirect to the sign in page
     When I navigate to the welcome page
     Then I'm being redirected to the sign in page
