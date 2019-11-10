@@ -7,3 +7,4 @@ nl:
   sessions:
     new:
       title: 'Aanmelden bij %{app_name}'
+      body: 'Alleen als je bent aangemeld, kun je deze applicatie gebruiken. Nadat je je e-mailadres hebt ingevuld, ontvang je een mail om verder te gaan.'
