@@ -8,7 +8,7 @@ class SessionsMailer < ApplicationMailer
   #   en.sessions_mailer.magic_link.subject
   #
   def magic_link(user)
-    @user       = user.decorate.to_label
+    @user       = user.decorate.mail_to
     @magic_link = token_sign_in_url(user.login_token)
     @app_name   = Rails.application.config.app_name
 

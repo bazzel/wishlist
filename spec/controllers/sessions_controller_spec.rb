@@ -18,4 +18,103 @@ RSpec.describe SessionsController, type: :controller do
       expect(assigns[:user]).to be_a(User)
     end
   end
+
+  describe 'POST /sessions' do
+    let(:email) do
+      'john.doe@example.org'
+    end
+    let(:options) do
+      {
+        user: {
+          email: email
+        }
+      }
+    end
+
+    def do_post(params = options)
+      post :create, params: params
+    end
+
+    describe 'on success' do
+      before do
+        allow(SessionsMailer).to receive(:magic_link)
+          .and_return(sessions_mailer_mock)
+      end
+
+      let(:sessions_mailer_mock) do
+        # rubocop:disable RSpec/VerifiedDoubles
+        spy('ActionMailer::MessageDelivery')
+        # rubocop:enable RSpec/VerifiedDoubles
+      end
+
+      context 'with new user' do
+        it 'creates the user' do
+          expect do
+            do_post
+          end.to change(User, :count).by(1)
+        end
+
+        it 'assigns the email address' do
+          do_post
+          expect(User.first.email).to eql(email)
+        end
+
+        it 'sets the login token' do
+          do_post
+          expect(User.first.login_token).not_to be_nil
+        end
+
+        it 'expires in some time' do
+          do_post
+          expect(User.first.login_token_valid_until).to be_within(1.second)
+            .of(30.minutes.from_now)
+        end
+
+        # rubocop:disable RSpec/MultipleExpectations
+        it 'sends a mail' do
+          do_post
+          expect(SessionsMailer).to have_received(:magic_link)
+          expect(sessions_mailer_mock).to have_received(:deliver)
+        end
+        # rubocop:enable RSpec/MultipleExpectations
+
+        it 'renders the create template' do
+          expect(do_post).to render_template(:create)
+        end
+      end
+
+      context 'with existing user' do
+        before do
+          create(:user, email: email)
+        end
+
+        it 'does not create a user' do
+          expect { do_post }.not_to change(User, :count)
+        end
+
+        it 'sets the login token' do
+          do_post
+          expect(User.first.login_token).not_to be_nil
+        end
+
+        it 'expires in some time' do
+          do_post
+          expect(User.first.login_token_valid_until).to be_within(1.second)
+            .of(30.minutes.from_now)
+        end
+
+        # rubocop:disable RSpec/MultipleExpectations
+        it 'sends a mail' do
+          do_post
+          expect(SessionsMailer).to have_received(:magic_link)
+          expect(sessions_mailer_mock).to have_received(:deliver)
+        end
+        # rubocop:enable RSpec/MultipleExpectations
+
+        it 'renders the create template' do
+          expect(do_post).to render_template(:create)
+        end
+      end
+    end
+  end
 end

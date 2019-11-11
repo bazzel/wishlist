@@ -4,10 +4,9 @@
 class UserDecorator < ApplicationDecorator
   delegate_all
 
-  def to_label
-    # return name if name.present?
-
+  # TODO: Once we have the user's name
+  # we can return "John Smith" <johnsemail@hisserver.com>
+  def mail_to
     email
   end
-  alias to_s to_label
 end

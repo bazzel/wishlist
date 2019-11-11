@@ -25,3 +25,10 @@ AllCops:
     - 'vendor/bundle/**/*'
     - 'Gemfile'
     - 'Rakefile'
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+RSpec/NestedGroups:
+  Enabled: false
