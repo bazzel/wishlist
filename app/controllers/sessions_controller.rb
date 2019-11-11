@@ -2,7 +2,7 @@
 
 # Handles signin in and out of users.
 class SessionsController < ApplicationController
-  skip_before_action :require_sign_in, only: %i[new create]
+  skip_before_action :require_sign_in, only: %i[new create show]
 
   def new
     @user = User.new
@@ -18,5 +18,17 @@ class SessionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    user = User.valid_with_token(params[:token])
+
+    return unless user
+
+    user.invalidate_token
+    self.current_user = user
+    redirect_to root_path
+    # else
+    # redirect_to root_path, alert: 'Invalid or expired login link'
   end
 end

@@ -7,11 +7,15 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  private
+  def current_user=(user)
+    session[:user_id] = user.id
+  end
 
   def current_user
     User.find_by(id: session[:user_id]) || NullUser.new
   end
+
+  private
 
   def require_sign_in
     redirect_to sign_in_path if current_user.anonymous?

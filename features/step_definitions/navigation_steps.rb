@@ -15,3 +15,8 @@ end
 Then("I'm being redirected to the sign in page") do
   step 'I see the sign in page'
 end
+
+When('I use the magic link') do
+  @user = User.last
+  visit token_sign_in_path(@user.login_token)
+end
