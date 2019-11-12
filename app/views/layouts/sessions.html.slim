@@ -13,4 +13,6 @@ html
 
   body
     .container
+      - flash.each do |k, v|
+        .alert= v
       = yield

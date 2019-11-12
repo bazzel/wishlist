@@ -9,3 +9,10 @@ Then("I'm in") do
 
   # expect(page).to have_link('add')
 end
+
+Then("I'm out") do
+  step 'I am on the Sign in page'
+
+  # expect(page).to have_text('Je bent nu afgemeld.')
+  expect(page).not_to have_button('add')
+end

@@ -23,13 +23,12 @@ Feature:
     When I use the magic link
     Then I'm in
 
-  @wip
   Scenario: Sign out
     Given I signed in with my email address "john.doe@example.org"
     When I sign out
     Then I'm out
 
-  @todo
+  @wip
   Scenario: Sign up without email address
     Given I am on the Sign in page
     And I click "Sign in"

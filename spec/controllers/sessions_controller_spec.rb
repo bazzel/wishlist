@@ -150,4 +150,21 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE sessions' do
+    before { controller.current_user = build_stubbed(:user) }
+
+    def do_delete
+      delete 'destroy'
+    end
+
+    it 'nullifies the current user' do
+      do_delete
+      expect(controller.current_user).to be_anonymous
+    end
+
+    it 'redirect to the sign in path' do
+      expect(do_delete).to redirect_to(root_path)
+    end
+  end
 end
