@@ -17,14 +17,13 @@ Feature:
     Then "john.doe@example.org" should receive an email
     And I see a page with instructions for "john.doe@example.org" how to login
 
-  @wip
   Scenario: Sign in with valid url
     Given I am on the Sign in page
     And I sign up with my email address "john.doe@example.org"
     When I use the magic link
     Then I'm in
 
-  @todo
+  @wip
   Scenario: Sign out
     Given I signed in with my email address "john.doe@example.org"
     When I sign out

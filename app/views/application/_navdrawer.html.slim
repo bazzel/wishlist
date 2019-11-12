@@ -1,0 +1,13 @@
+- # See http://daemonite.github.io/material/docs/4.1/material/navigation-drawer/
+#navdrawerDefault.navdrawer aria-hidden='true' tabindex='-1'
+  .navdrawer-content
+    .navdrawer-header
+      a.navbar-brand.px-0 href='#'
+        = app_name
+    ul.navdrawer-nav
+      li.nav-item
+        = link_to root_path, class: 'nav-link'
+          i.material-icons.mr-3 book
+          = User.model_name.human.pluralize
+
+

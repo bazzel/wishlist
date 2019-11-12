@@ -12,5 +12,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
+    = render partial: 'navbar'
+    = render partial: 'navdrawer'
+
     .container
       = yield
