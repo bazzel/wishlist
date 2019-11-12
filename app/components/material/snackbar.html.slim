@@ -1,8 +1,8 @@
 - if message.present?
-  div(data-controller='snackbar' data-target='snackbar.container' class=snackbar_class)
+  div(data={ controller: data_controller, target: "#{data_controller}.container"} class=snackbar_class)
     .snackbar-body
       = message
       - if action
         span.snackbar-btn.d-inline-block.ml-4
           =< action
-    = close_icon(class: 'text-light ml-2', data: { action: 'snackbar#hide' })
+    = close_icon(class: 'text-light ml-2', data: { action: "#{data_controller}#hide" })

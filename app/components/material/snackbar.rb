@@ -4,6 +4,10 @@ module Material
   # Snackbars provide brief feedback about an operation
   # through a message at the bottom of the screen.
   # @see http://daemonite.github.io/material/docs/4.1/material/snackbars/
+  #
+  # Make sure you have Stimulus setup and
+  # a controller named `snackbar'
+  # @see app/javascript/controllers/snackbar_controller.js
   class Snackbar < ActionView::Component::Base
     include BootstrapHelper
 
@@ -37,6 +41,11 @@ module Material
 
     def long_message?
       message.size > 75
+    end
+
+    # Stimulus
+    def data_controller
+      'snackbar'
     end
   end
 end
