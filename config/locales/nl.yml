@@ -6,6 +6,14 @@ nl:
       session:
         destroy: 'Afmelden'
 
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_an_email_address: 'is geen geldig e-mailadres'
+
   sessions:
     new:
       title: 'Aanmelden bij %{app_name}'

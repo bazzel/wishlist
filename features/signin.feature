@@ -28,15 +28,12 @@ Feature:
     When I sign out
     Then I'm out
 
-  @wip
   Scenario: Sign up without email address
     Given I am on the Sign in page
-    And I click "Sign in"
+    When I sign up without an email address
     Then I see an error telling me an email address is required
 
-  @todo
   Scenario: Sign up with an invalid email address
     Given I am on the Sign in page
-    And I fill in "Email" with "john.doe"
-    And I click "Sign in"
+    And I sign up with my email address "john.doe"
     Then I see an error telling me I have entered an invalid email address

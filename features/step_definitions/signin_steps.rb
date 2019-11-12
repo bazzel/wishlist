@@ -11,6 +11,10 @@ When('I sign up with my email address {string}') do |email|
   click_on 'Aanmelden'
 end
 
+When('I sign up without an email address') do
+  step 'I sign up with my email address ""'
+end
+
 When('I sign out') do
   within('nav') do
     click_on @user.email
@@ -29,4 +33,14 @@ Then('I see the sign in page') do
   expect(page).to have_css('h1', text: 'Aanmelden bij Wishlist')
   expect(page).to have_field('user[email]')
   expect(page).to have_button('Aanmelden')
+end
+
+Then('I see an error telling me an email address is required') do
+  expect(current_path).to eql('/sign_in')
+  expect(page).to have_text('Email moet opgegeven zijn')
+end
+
+Then('I see an error telling me I have entered an invalid email address') do
+  expect(current_path).to eql('/sign_in')
+  expect(page).to have_text('Email is geen geldig e-mailadres')
 end

@@ -2,6 +2,11 @@
 
 #:nodoc:
 class User < ApplicationRecord
+  validates :email, presence: true,
+                    uniqueness: { case_sensitive: false },
+                    length: { maximum: 255 },
+                    email: true
+
   def self.valid_with_token(token)
     where(login_token: token)
       .find_by('login_token_valid_until > ?', Time.zone.now)
