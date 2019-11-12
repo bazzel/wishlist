@@ -30,5 +30,10 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
 
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - spec/**/*.rb
+
 RSpec/NestedGroups:
   Enabled: false
