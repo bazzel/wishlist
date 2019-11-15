@@ -8,7 +8,7 @@ Given('I am on the Sign in page') do
   visit '/sign_in'
 end
 
-When('I click the {string} button') do |label|
+When('I click( the) {string}( button)') do |label|
   click_on label
 end
 

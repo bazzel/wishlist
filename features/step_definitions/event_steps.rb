@@ -9,7 +9,24 @@ Then('I am seeing a page for adding a new event') do
   end
 end
 
+Given('I am adding a new event') do
+  step 'I signed in'
+  step 'I click the "add" button'
+end
+
 Then(/I am( not)? seeing the button for adding a new event/) do |negate|
   have_add_button = have_link('add')
   negate ? expect(page).not_to(have_add_button) : expect(page).to(have_add_button)
+end
+
+Then('I am viewing the event') do
+  event = Event.last
+
+  expect(current_path).to eql(event_path(event))
+  expect(page).to have_content(event.title)
+end
+
+Then('I can edit the event') do
+  click_on('more_vert')
+  expect(page).to have_link('Edit')
 end

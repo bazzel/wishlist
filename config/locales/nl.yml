@@ -11,6 +11,9 @@ nl:
   activerecord:
     models:
       event: 'Afspraak'
+    attributes:
+      event:
+        title: 'Titel'
     errors:
       models:
         user:
