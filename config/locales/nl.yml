@@ -5,8 +5,12 @@ nl:
         create: 'Aanmelden'
       session:
         destroy: 'Afmelden'
+      event:
+        create: 'Opslaan'
 
   activerecord:
+    models:
+      event: 'Afspraak'
     errors:
       models:
         user:
@@ -23,6 +27,10 @@ nl:
       body: 'We hebben een speciale link gemaild naar %{email}. Klik op de link in de e-mail om van start te kunnen gaan.'
     destroy:
       notice: 'Je bent nu afgemeld.'
+  events:
+    new:
+      title: 'Een nieuwe %{subject} maken'
+      cancel: 'Maken van %{subject} annuleren'
   # mailers:
   sessions_mailer:
     magic_link:

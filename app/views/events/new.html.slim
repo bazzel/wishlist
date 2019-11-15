@@ -1,0 +1,4 @@
+- content_for :header do
+  h1.card-title= t('.title', subject: Event.model_name.human.downcase)
+
+= render partial: 'form', locals: { event: @event }, layout: 'form_layout'

@@ -6,6 +6,10 @@ Given('I signed in with my email address {string}') do |email|
   step 'I use the magic link'
 end
 
+Given('I signed in') do
+  step 'I signed in with my email address "john.doe@example.org"'
+end
+
 When('I sign up with my email address {string}') do |email|
   fill_in('user[email]', with: email)
   click_on 'Aanmelden'
