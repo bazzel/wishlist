@@ -22,5 +22,8 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :input
   end
+
+  # The default wrapper to be used by the FormBuilder.
+  config.default_wrapper = :vertical_form_w_floating_label
 end
 
