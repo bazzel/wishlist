@@ -24,7 +24,7 @@ RSpec.describe EventsController, type: :controller do
 
   describe 'GET #show' do
     def do_get
-      get :show, params: { id: event.to_param }, session: valid_session
+      get :show, params: { slug: event.to_param }, session: valid_session
     end
 
     let!(:event) { create :event }

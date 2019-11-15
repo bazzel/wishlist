@@ -2,15 +2,15 @@
 
 #:nodoc:
 class EventsController < ApplicationController
+  before_action :set_event, only: [:show]
+
   def index; end
 
   def new
     @event = Event.new
   end
 
-  def show
-    @event = Event.find(params[:id])
-  end
+  def show; end
 
   def create
     @event = Event.new(event_params)
@@ -23,6 +23,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def set_event
+    @event = Event.find_by(slug: params[:slug])
+  end
 
   def event_params
     params.require(:event).permit(:title)

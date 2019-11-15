@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :event do
     title { 'MyString' }
+    slug { 'lorem-ipsum' }
 
     trait :invalid do
       title { '' }
