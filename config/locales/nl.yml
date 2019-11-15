@@ -33,7 +33,9 @@ nl:
   events:
     new:
       title: 'Een nieuwe %{subject} maken'
-      cancel: 'Maken van %{subject} annuleren'
+      cancel: &cancel_event_creation 'Maken van %{subject} annuleren'
+    create:
+      cancel: *cancel_event_creation
   # mailers:
   sessions_mailer:
     magic_link:
