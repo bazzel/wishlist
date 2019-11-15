@@ -12,8 +12,8 @@ When('I click( the) {string}( button)') do |label|
   click_on label
 end
 
-When('I navigate to the welcome page') do
-  visit '/welcome'
+When('I navigate to the events page') do
+  visit '/events'
 end
 
 Then("I'm being redirected to the sign in page") do

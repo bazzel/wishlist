@@ -8,7 +8,7 @@ Feature:
     Then I see the sign in page
 
   Scenario: Redirect to the sign in page
-    When I navigate to the welcome page
+    When I navigate to the events page
     Then I'm being redirected to the sign in page
 
   Scenario: Sign in with a valid email address

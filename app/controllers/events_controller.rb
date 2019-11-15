@@ -4,16 +4,18 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
-  def index; end
+  def index
+    @events = policy_scope(Event)
+  end
 
   def new
-    @event = Event.new
+    @event = authorize Event.new
   end
 
   def show; end
 
   def create
-    @event = Event.new(event_params)
+    @event = authorize Event.new(event_params)
 
     if @event.save
       redirect_to @event
@@ -25,7 +27,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find_by(slug: params[:slug]).decorate
+    @event = authorize Event.find_by(slug: params[:slug]).decorate
   end
 
   def event_params

@@ -8,6 +8,8 @@ class Event < ApplicationRecord
 
   before_create :set_slug
 
+  scope :with_guest, -> (user) { includes(:users).where(users: { id: user.id }) }
+
   def to_param
     slug
   end

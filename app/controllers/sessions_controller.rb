@@ -3,6 +3,7 @@
 # Handles signin in and out of users.
 class SessionsController < ApplicationController
   skip_before_action :require_sign_in
+  skip_after_action :verify_authorized
 
   def new
     @user = User.new

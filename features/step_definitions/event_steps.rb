@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+Given('I am adding a new event') do
+  step 'I signed in'
+  step 'I click the "add" button'
+end
+
+Given('I have created the following events:') do |table|
+  current_user = User.find_by(email: @current_user_email)
+
+  table.hashes.each do |hash|
+    create(:event, hash.merge(users: [current_user]))
+  end
+end
+
 Then('I am seeing a page for adding a new event') do
   expect(current_path).to eql('/events/new')
   expect(page).to have_content('Een nieuwe afspraak maken')
@@ -7,11 +20,6 @@ Then('I am seeing a page for adding a new event') do
   within('form') do
     expect(page).to have_button('Opslaan')
   end
-end
-
-Given('I am adding a new event') do
-  step 'I signed in'
-  step 'I click the "add" button'
 end
 
 Then(/I am( not)? seeing the button for adding a new event/) do |negate|
@@ -32,4 +40,10 @@ end
 Then('I can edit the event') do
   click_on('more_vert')
   expect(page).to have_link('Edit')
+end
+
+Then('I see a page with {int} events') do |items_count|
+  within('.list-group') do
+    expect(page).to have_css('.list-group-item', count: items_count)
+  end
 end

@@ -2,10 +2,17 @@
 
 #:nodoc:
 class ApplicationController < ActionController::Base
+  include Pundit
+
   before_action :require_sign_in
   before_action :make_action_mailer_use_request_host_and_protocol
 
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
   helper_method :current_user
+
+  def index; end
 
   def current_user=(user)
     session[:user_id] = user.id

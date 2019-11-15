@@ -95,3 +95,5 @@ RSpec.configure do |config|
   #   # value as the one that triggered the failure.
   #   Kernel.srand config.seed
 end
+
+require 'pundit/rspec'
