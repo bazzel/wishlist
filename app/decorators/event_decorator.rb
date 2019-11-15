@@ -12,4 +12,13 @@ class EventDecorator < ApplicationDecorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
+
+  def number_of_users
+    users_count = users.size
+
+    [
+      users_count,
+      Event.human_attribute_name('users').pluralize(users_count, I18n.locale).downcase
+    ].join(' ')
+  end
 end

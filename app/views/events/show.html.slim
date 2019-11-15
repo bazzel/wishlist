@@ -10,9 +10,7 @@
         = link_to t('.edit'), edit_event_path(@event), class: 'dropdown-item'
 
   .card-body
-    p
-      => @event.users.size
-      = Event.human_attribute_name('users').pluralize(@event.users.size, I18n.locale).downcase
+    p= @event.number_of_users
     ul
     - @event.users.each do |user|
       li= user.email

@@ -33,6 +33,11 @@ RSpec.describe EventsController, type: :controller do
       do_get
       expect(response).to be_successful
     end
+
+    it 'decorates the event' do
+      do_get
+      expect(assigns(:event)).to be_decorated
+    end
   end
 
   describe 'POST #create' do
@@ -62,7 +67,7 @@ RSpec.describe EventsController, type: :controller do
 
       it 'adds the current user as the first guest' do
         do_post(valid_attributes)
-        expect(Event.first.users.size).to eql(1)
+        expect(Event.first.users.size).to be(1)
       end
     end
 

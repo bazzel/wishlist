@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find_by(slug: params[:slug])
+    @event = Event.find_by(slug: params[:slug]).decorate
   end
 
   def event_params

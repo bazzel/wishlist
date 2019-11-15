@@ -4,7 +4,7 @@
 class Event < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users # rubocop:disable Rails/HasAndBelongsToMany
 
   before_create :set_slug
 
