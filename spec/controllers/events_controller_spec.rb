@@ -59,6 +59,11 @@ RSpec.describe EventsController, type: :controller do
         do_post(valid_attributes)
         expect(response).to redirect_to(Event.last)
       end
+
+      it 'adds the current user as the first guest' do
+        do_post(valid_attributes)
+        expect(Event.first.users.size).to eql(1)
+      end
     end
 
     context 'with invalid params' do

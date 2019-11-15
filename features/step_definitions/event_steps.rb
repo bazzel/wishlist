@@ -24,6 +24,9 @@ Then('I am viewing the event') do
 
   expect(current_path).to eql(event_path(event))
   expect(page).to have_content(event.title)
+
+  expect(page).to have_content('1 gast')
+  expect(page).to have_content(@current_user_email)
 end
 
 Then('I can edit the event') do

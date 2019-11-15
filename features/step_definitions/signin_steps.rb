@@ -11,6 +11,7 @@ Given('I signed in') do
 end
 
 When('I sign up with my email address {string}') do |email|
+  @current_user_email = email
   fill_in('user[email]', with: email)
   click_on 'Aanmelden'
 end
