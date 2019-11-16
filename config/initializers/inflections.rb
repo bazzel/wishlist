@@ -18,4 +18,5 @@
 
 ActiveSupport::Inflector.inflections(:nl) do |inflect|
  inflect.irregular 'gast', 'gasten'
+ inflect.irregular 'afspraak', 'afspraken'
 end

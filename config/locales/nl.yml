@@ -1,5 +1,6 @@
 nl:
   helpers:
+    options: 'Opties'
     submit:
       user:
         create: 'Aanmelden'

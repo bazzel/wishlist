@@ -14,7 +14,6 @@ Feature: Creating an event
     And I can edit the event
     And I am seeing the button for adding a new event
 
-  @wip
   Scenario: Event is not visible to others
     Given I signed in
     And I have created the following events:

@@ -6,8 +6,8 @@
         = app_name
     ul.navdrawer-nav
       li.nav-item
-        = link_to root_path, class: 'nav-link'
-          i.material-icons.mr-3 book
-          = User.model_name.human.pluralize
+        = link_to events_path, class: 'nav-link'
+          i.material-icons.mr-3 event
+          = Event.model_name.human.pluralize(I18n.locale)
 
 

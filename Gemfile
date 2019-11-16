@@ -67,6 +67,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'email_spec'
   gem 'shoulda-matchers'
+  gem 'pundit-matchers', '~> 1.6.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

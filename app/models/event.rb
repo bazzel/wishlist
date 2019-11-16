@@ -8,10 +8,14 @@ class Event < ApplicationRecord
 
   before_create :set_slug
 
-  scope :with_guest, -> (user) { includes(:users).where(users: { id: user.id }) }
+  scope :with_user, ->(user) { includes(:users).where(users: { id: user.id }) }
 
   def to_param
     slug
+  end
+
+  def has_user?(user) # rubocop:disable Naming/PredicateName
+    users.include?(user)
   end
 
   private

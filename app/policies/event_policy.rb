@@ -5,21 +5,15 @@ class EventPolicy < ApplicationPolicy
   #:nodoc:
   class Scope < Scope
     def resolve
-      scope.with_guest(user)
+      scope.with_user(user)
     end
   end
 
   def create?
-    identified?
+    true
   end
 
   def show?
-    identified?
-  end
-
-  private
-
-  def identified?
-    user.identified?
+    record.has_user?(user)
   end
 end

@@ -3,27 +3,29 @@
 require 'rails_helper'
 
 RSpec.describe EventPolicy, type: :policy do
-  subject { described_class }
+  subject     { described_class.new(user, event) }
 
-  let(:user) { User.new }
+  let(:event) { create(:event, users: [me]) }
+  let(:me)    { build :user }
+  let(:you)   { build :user }
 
-  permissions '.scope' do
-    pending "add some examples to (or delete) #{__FILE__}"
+  context 'with me' do
+    let(:user) { me }
+
+    it { is_expected.to permit_action(:new) }
+    it { is_expected.to permit_action(:create) }
+    # it { is_expected.to permit_action(:update) }
+    # it { is_expected.to permit_action(:destroy) }
+    it { is_expected.to permit_action(:show) }
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  context 'with you' do
+    let(:user) { you }
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it { is_expected.to permit_action(:new) }
+    it { is_expected.to permit_action(:create) }
+    # it { is_expected.to permit_action(:update) }
+    # it { is_expected.to permit_action(:destroy) }
+    it { is_expected.to forbid_action(:show) }
   end
 end

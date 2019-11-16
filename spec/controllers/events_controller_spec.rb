@@ -27,7 +27,7 @@ RSpec.describe EventsController, type: :controller do
       get :show, params: { slug: event.to_param }, session: valid_session
     end
 
-    let!(:event) { create :event }
+    let!(:event) { create :event, users: [current_user] }
 
     it 'returns a success response' do
       do_get
