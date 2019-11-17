@@ -17,6 +17,4 @@ FactoryBot.define do
     # login_token { Faker::Crypto.unique.md5 }
     # end
   end
-
-  factory :guest, class: NullUser
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_140550) do
+ActiveRecord::Schema.define(version: 2019_11_17_092525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_11_15_140550) do
     t.index ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id"
   end
 
+  create_table "guests", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_guests_on_event_id"
+    t.index ["user_id"], name: "index_guests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", limit: 255
     t.string "login_token"
@@ -38,4 +47,6 @@ ActiveRecord::Schema.define(version: 2019_11_15_140550) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "guests", "events"
+  add_foreign_key "guests", "users"
 end
