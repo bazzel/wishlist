@@ -1,4 +1,6 @@
 = simple_form_for(event) do |f|
   = f.input :title
+  = f.input :guest_emails, input_html: { value: event.guest_emails.to_s, data: { controller: 'chip-input' }}
+
   = f.button :submit, class: 'btn btn-outline-primary'
 

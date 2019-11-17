@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   def new
     @event = authorize Event.new
+    @event.users << current_user
   end
 
   def show; end
@@ -31,6 +32,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title).merge(users: [current_user])
+    params.require(:event).permit(:title, :guest_emails)
   end
 end

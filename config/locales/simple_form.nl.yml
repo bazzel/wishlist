@@ -31,5 +31,7 @@ nl:
     #     age: 'Select your age'
     placeholders:
       user:
-        email: E-mailadres
+        email: 'E-mailadres'
+      event:
+        guest_emails: 'Gasten toevoegen'
 

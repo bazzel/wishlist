@@ -26,5 +26,12 @@ Feature: Creating an event
     And I open the application
     Then I see a page with 0 events
 
-  @todo
+  @wip
   Scenario: Invite guests
+    Given I am adding a new event
+    And I fill in "Titel" with "Awesome Event"
+    And I add "jane@example.org" as guest
+    And I click "Opslaan"
+    When I signed in with my email address "jane@example.org"
+    And I open the application
+    Then I see a page with 1 event
