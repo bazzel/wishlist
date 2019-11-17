@@ -15,7 +15,7 @@ class Event < ApplicationRecord
     slug
   end
 
-  def has_user?(user) # rubocop:disable Naming/PredicateName
+  def guest?(user)
     users.include?(user)
   end
 
