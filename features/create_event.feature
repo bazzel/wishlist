@@ -26,6 +26,7 @@ Feature: Creating an event
     And I open the application
     Then I see a page with 0 events
 
+  @javascript
   @wip
   Scenario: Invite guests
     Given I am adding a new event

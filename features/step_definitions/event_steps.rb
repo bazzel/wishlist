@@ -42,7 +42,7 @@ Then('I can edit the event') do
   expect(page).to have_link('Edit')
 end
 
-Then('I see a page with {int} events') do |items_count|
+Then('I see a page with {int} event(s)') do |items_count|
   within('.list-group') do
     expect(page).to have_css('.list-group-item', count: items_count)
   end
