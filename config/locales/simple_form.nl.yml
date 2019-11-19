@@ -33,5 +33,6 @@ nl:
       user:
         email: 'E-mailadres'
       event:
+        title: 'Titel toevoegen'
         guest_emails: 'Gasten toevoegen'
 

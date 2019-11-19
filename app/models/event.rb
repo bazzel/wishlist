@@ -11,8 +11,6 @@ class Event < ApplicationRecord
   before_validation :set_users
   after_validation :copy_errors
 
-  attr_accessor :guest_emails
-
   scope :with_user, ->(user) { includes(:users).where(users: { id: user.id }) }
 
   def to_param
@@ -24,11 +22,9 @@ class Event < ApplicationRecord
   end
 
   def guest_emails=(value)
-    begin
-      @guest_emails = parse_tagify_json(value)
-    rescue
-      @guest_emails = value.split
-    end
+    @guest_emails = parse_tagify_json(value)
+  rescue StandardError
+    @guest_emails = value.split
   end
 
   def guest_emails
