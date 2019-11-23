@@ -17,12 +17,14 @@ tags {
 
 .tagify__tag {
   margin: 0 5px 0 0;
+
   &:hover:not([readonly]) div::before {
-    top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
+    right: 0;
+    top: 0;
   }
+
   .close.material-icons {
     font-size: 24px;
   }

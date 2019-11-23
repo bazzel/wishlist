@@ -1,6 +1,6 @@
 = simple_form_for(event, html: { autocomplete: 'off' }) do |f|
   = f.input :title, autofocus: true
-  = f.input :guest_emails, input_html: { value: event.guest_emails.to_s, data: { controller: 'chip-input' }}
+  = f.input :guest_emails, input_html: { data: { controller: 'chip-input' }}
 
   = f.button :submit, class: 'btn btn-outline-primary'
 
