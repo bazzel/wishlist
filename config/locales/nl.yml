@@ -12,6 +12,7 @@ nl:
   activerecord:
     models:
       event: 'Afspraak'
+      guest: 'Gast'
     attributes:
       event:
         title: 'Titel'

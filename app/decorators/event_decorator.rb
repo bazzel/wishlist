@@ -18,7 +18,7 @@ class EventDecorator < ApplicationDecorator
 
     [
       users_count,
-      Event.human_attribute_name('users').pluralize(users_count, I18n.locale).downcase
+      Guest.model_name.human.pluralize(users_count, I18n.locale).downcase
     ].join(' ')
   end
 end

@@ -46,7 +46,7 @@ RSpec.describe EventsController, type: :controller do
     end
 
     let(:valid_attributes) do
-      attributes_for(:event)
+      attributes_for(:event).merge(guest_emails: [{ value: current_user.email }].to_json)
     end
 
     let(:invalid_attributes) do

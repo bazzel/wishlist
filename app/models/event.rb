@@ -32,6 +32,8 @@ class Event < ApplicationRecord
   end
 
   def set_users
+    return if @guest_emails.blank?
+
     self.users = @guest_emails.map do |email|
       User.find_or_initialize_by(email: email)
     end
