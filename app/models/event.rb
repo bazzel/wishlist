@@ -17,7 +17,7 @@ class Event < ApplicationRecord
     slug
   end
 
-  def guest?(user)
+  def invited?(user)
     users.include?(user)
   end
 

@@ -14,6 +14,6 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    record.guest?(user)
+    record.invited?(user)
   end
 end

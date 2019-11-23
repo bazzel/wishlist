@@ -33,8 +33,8 @@ RSpec.describe Event, type: :model do
     it { expect(instance.slug).not_to be_nil }
   end
 
-  describe '#guest?' do
-    subject        { instance.guest?(user) }
+  describe '#invited?' do
+    subject        { instance.invited?(user) }
 
     let(:instance) { create(:event, users: [me]) }
     let(:me)       { create(:user) }
