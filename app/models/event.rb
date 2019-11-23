@@ -31,6 +31,15 @@ class Event < ApplicationRecord
     @guest_emails ||= users.map(&:email)
   end
 
+  private
+
+  def set_slug
+    loop do
+      self.slug = SecureRandom.uuid
+      break unless self.class.where(slug: slug).exists?
+    end
+  end
+
   def set_users
     return if @guest_emails.blank?
 
@@ -42,15 +51,6 @@ class Event < ApplicationRecord
   def copy_errors
     errors[:users].each do |msg|
       errors.add(:guest_emails, msg)
-    end
-  end
-
-  private
-
-  def set_slug
-    loop do
-      self.slug = SecureRandom.uuid
-      break unless self.class.where(slug: slug).exists?
     end
   end
 

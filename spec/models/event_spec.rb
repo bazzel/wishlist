@@ -52,4 +52,49 @@ RSpec.describe Event, type: :model do
       it { is_expected.to be false }
     end
   end
+
+  describe '#guest_emails=' do
+    let(:instance) { build :event }
+
+    context 'with stringified JSON' do
+      context 'with existing users' do
+        let!(:user) { create :user }
+
+        it 'adds the users as guests' do
+          instance.guest_emails = [{ value: user.email }].to_json
+          instance.validate
+          expect(instance.users.size).to be(1)
+        end
+      end
+
+      context 'with non-existing users' do
+        it 'adds the users as guests' do
+          instance.guest_emails = [{ value: 'jane.doe@example.org' }].to_json
+          instance.validate
+          expect(instance.users.size).to be(1)
+        end
+      end
+
+      context 'with invalid e-mailadresses' do
+        it 'invalidates the event' do
+          instance.guest_emails = [{ value: 'jane.doe' }].to_json
+          expect(instance).not_to be_valid
+        end
+
+        it 'adds an error to `guest_emails`' do
+          instance.guest_emails = [{ value: 'jane.doe' }].to_json
+          instance.validate
+          expect(instance.errors[:guest_emails]).not_to be_empty
+        end
+      end
+    end
+
+    context 'with an array of strings' do
+      it 'adds the users as guests' do
+        instance.guest_emails = ['jane.doe@example.org']
+        instance.validate
+        expect(instance.users.size).to be(1)
+      end
+    end
+  end
 end
