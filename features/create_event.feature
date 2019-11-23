@@ -27,7 +27,6 @@ Feature: Creating an event
     Then I see a page with 0 events
 
   @javascript
-  @wip
   Scenario: Invite guests
     Given I am adding a new event
     And I fill in "Titel" with "Awesome Event"
