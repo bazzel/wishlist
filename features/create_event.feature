@@ -17,8 +17,8 @@ Feature: Creating an event
   Scenario: Event is not visible to others
     Given I signed in
     And I have created the following events:
-      | title |
-      | Awesome Event |
+      | title          |
+      | Awesome Event  |
       | Awesomer Event |
     When I open the application
     Then I see a page with 2 events

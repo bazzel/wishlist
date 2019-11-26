@@ -7,7 +7,8 @@ nl:
       session:
         destroy: 'Afmelden'
       event:
-        create: 'Opslaan'
+        create: &save 'Opslaan'
+        update: *save
 
   activerecord:
     models:
@@ -45,6 +46,8 @@ nl:
     new:
       title: 'Een nieuwe %{subject} maken'
       cancel: &cancel_event_creation 'Maken van %{subject} annuleren'
+    show:
+      edit: 'Bewerken'
     create:
       cancel: *cancel_event_creation
   # mailers:

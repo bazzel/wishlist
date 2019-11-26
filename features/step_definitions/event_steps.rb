@@ -22,6 +22,14 @@ Then('I am seeing a page for adding a new event') do
   end
 end
 
+Then("I am seeing a page for editing the event") do
+  expect(current_path).to match(/\/events\/.*\/edit/)
+
+  within('form') do
+    expect(page).to have_button('Opslaan')
+  end
+end
+
 Then(/I am( not)? seeing the button for adding a new event/) do |negate|
   have_add_button = have_link('add')
   negate ? expect(page).not_to(have_add_button) : expect(page).to(have_add_button)

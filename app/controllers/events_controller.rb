@@ -2,7 +2,7 @@
 
 #:nodoc:
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show]
+  before_action :set_event, only: [:show, :edit]
 
   def index
     @events = policy_scope(Event)
@@ -14,6 +14,10 @@ class EventsController < ApplicationController
   end
 
   def show; end
+
+  def edit
+
+  end
 
   def create
     @event = authorize Event.new(event_params)

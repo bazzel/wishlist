@@ -13,6 +13,10 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    record.invited?(user)
+  end
+
   def show?
     record.invited?(user)
   end
