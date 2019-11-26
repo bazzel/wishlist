@@ -2,6 +2,7 @@ nl:
   helpers:
     options: 'Opties'
     submit:
+      edit: &edit 'Bewerken'
       user:
         create: 'Aanmelden'
       session:
@@ -47,7 +48,7 @@ nl:
       title: 'Een nieuwe %{subject} maken'
       cancel: &cancel_event_creation 'Maken van %{subject} annuleren'
     show:
-      edit: 'Bewerken'
+      edit: *edit
     create:
       cancel: *cancel_event_creation
   # mailers:

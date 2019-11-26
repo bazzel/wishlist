@@ -25,7 +25,7 @@ When('I use the magic link') do
   visit token_sign_in_path(@user.login_token)
 end
 
-When("I choose {string} from the {string} menu") do |submenu, menu|
+When('I choose {string} from the {string} menu') do |submenu, menu|
   click_on(menu)
   click_on(submenu)
 end

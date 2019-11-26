@@ -16,3 +16,7 @@ Then("I'm out") do
   # expect(page).to have_text('Je bent nu afgemeld.')
   expect(page).not_to have_button('add')
 end
+
+When('I expand the panel for {string}') do |title|
+  find('.expansion-panel', text: title).click
+end

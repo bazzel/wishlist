@@ -1,0 +1,19 @@
+.expansion-panel.list-group-item(id=event.dom_id)
+  .expansion-panel-toggler.collapsed(data-toggle='collapse' data-target="##{event.dom_id(:collapse)}")
+    .media-body
+      .row
+        .col
+          = event.title
+
+    .expansion-panel-icon.ml-3.text-black-secondary
+      i.collapsed-show.material-icons keyboard_arrow_down
+      i.collapsed-hide.material-icons keyboard_arrow_up
+
+
+  .collapse(id=event.dom_id(:collapse) data-parent="##{parent}" class=('show' if local_assigns[:show]))
+    .expansion-panel-body
+      .row
+        .col
+          | Lorem Ipsum
+    .expansion-panel-footer
+      = link_to t('helpers.submit.edit'), edit_event_path(event), class: 'btn btn-outline'

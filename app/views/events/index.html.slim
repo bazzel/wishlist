@@ -1,3 +1,1 @@
-ul.list-group
-  - @events.each do |event|
-    li.list-group-item= event.title
+= render(partial: 'results', object: @events, layout: 'results_layout', locals: { parent: 'events' })

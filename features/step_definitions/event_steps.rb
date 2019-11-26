@@ -13,6 +13,14 @@ Given('I have created the following events:') do |table|
   end
 end
 
+Given('I click {string} for event {string}') do |label, title|
+  step %(I expand the panel for "#{title}")
+
+  within('.list-group-item', text: title) do
+    click_on label
+  end
+end
+
 Then('I am seeing a page for adding a new event') do
   expect(current_path).to eql('/events/new')
   expect(page).to have_content('Een nieuwe afspraak maken')
@@ -22,8 +30,8 @@ Then('I am seeing a page for adding a new event') do
   end
 end
 
-Then("I am seeing a page for editing the event") do
-  expect(current_path).to match(/\/events\/.*\/edit/)
+Then('I am seeing a page for editing the event') do
+  expect(current_path).to match(%r{/events/.*/edit})
 
   within('form') do
     expect(page).to have_button('Opslaan')
@@ -47,7 +55,7 @@ end
 
 Then('I can edit the event') do
   click_on('more_vert')
-  expect(page).to have_link('Edit')
+  expect(page).to have_link('Bewerken')
 end
 
 Then('I see a page with {int} event(s)') do |items_count|
