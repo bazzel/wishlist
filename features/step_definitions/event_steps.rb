@@ -9,7 +9,9 @@ Given('I have created the following events:') do |table|
   current_user = User.find_by(email: @current_user_email)
 
   table.hashes.each do |hash|
-    create(:event, hash.merge(users: [current_user]))
+    guest_emails = (hash[:guest_emails]).to_s
+    hash[:guest_emails] = "#{guest_emails} #{current_user.email}"
+    create(:event, hash)
   end
 end
 

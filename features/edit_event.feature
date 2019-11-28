@@ -33,8 +33,32 @@ Feature: Editing an event
     And I open the application
     Then I see a page with 1 event
 
-  @todo
   Scenario: Remove a user
+    Given I signed in
+    And I have created the following events:
+      | title         | guest_emails     |
+      | Awesome Event | jane@example.org |
+    And I open the application
+    And I click "Bewerken" for event "Awesome Event"
+    When I remove "jane@example.org" as guest
+    And I click "Opslaan"
+    And I navigate to the events page
+    Then I see a page with 1 event
+    When I signed in with my email address "jane@example.org"
+    And I open the application
+    Then I see a page with 0 events
 
-  @todo
   Scenario: Keep a user
+    Given I signed in
+    And I have created the following events:
+      | title         | guest_emails     |
+      | Awesome Event | marty@example.org jane@example.org |
+    And I open the application
+    And I click "Bewerken" for event "Awesome Event"
+    When I remove "marty@example.org" as guest
+    And I click "Opslaan"
+    And I navigate to the events page
+    Then I see a page with 1 event
+    When I signed in with my email address "jane@example.org"
+    And I open the application
+    Then I see a page with 1 event
