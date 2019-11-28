@@ -1,3 +1,4 @@
+@javascript
 Feature: Editing an event
 
   Scenario: Edit event from index page
@@ -17,8 +18,20 @@ Feature: Editing an event
     When I choose "Bewerken" from the "more_vert" menu
     Then I am seeing a page for editing the event
 
-  @todo
   Scenario: Add a user
+    Given I signed in
+    And I have created the following events:
+      | title          |
+      | Awesome Event  |
+    And I open the application
+    And I click "Bewerken" for event "Awesome Event"
+    When I add "jane@example.org" as guest
+    And I click "Opslaan"
+    And I navigate to the events page
+    Then I see a page with 1 event
+    When I signed in with my email address "jane@example.org"
+    And I open the application
+    Then I see a page with 1 event
 
   @todo
   Scenario: Remove a user

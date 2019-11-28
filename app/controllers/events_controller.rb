@@ -2,7 +2,7 @@
 
 #:nodoc:
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show edit]
+  before_action :set_event, only: %i[show edit update]
 
   def index
     @events = policy_scope(Event).decorate
@@ -24,6 +24,14 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       render :new
+    end
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render :edit
     end
   end
 

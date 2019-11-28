@@ -9,7 +9,6 @@ class Event < ApplicationRecord
 
   before_create :set_slug
   before_validation :set_users
-  after_validation :copy_errors
 
   scope :with_user, ->(user) { includes(:users).where(users: { id: user.id }) }
 
@@ -44,13 +43,14 @@ class Event < ApplicationRecord
     return if @guest_emails.blank?
 
     self.users = @guest_emails.map do |email|
-      User.find_or_initialize_by(email: email)
-    end
-  end
+      user = User.find_or_initialize_by(email: email)
 
-  def copy_errors
-    errors[:users].each do |msg|
-      errors.add(:guest_emails, msg)
+      if user.valid?
+        user
+      else
+        errors.add(:guest_emails, :invalid)
+        return nil
+      end
     end
   end
 

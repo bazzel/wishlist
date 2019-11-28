@@ -31,7 +31,6 @@ nl:
             # see https://blog.bigbinary.com/2019/04/22/rails-6-allows-to-override-the-activemodel-errors-full_message-format-at-the-model-level-and-at-the-attribute-level.html
             guest_emails:
               format: '%{message}'
-            users:
               invalid: '1 of meer gasten heeft een ongeldig e-mailadres'
 
   sessions:
@@ -47,6 +46,8 @@ nl:
     new:
       title: 'Een nieuwe %{subject} maken'
       cancel: &cancel_event_creation 'Maken van %{subject} annuleren'
+    edit:
+      cancel: &cancel_event_changes 'Afspraakswijzigingen annuleren'
     show:
       edit: *edit
     create:

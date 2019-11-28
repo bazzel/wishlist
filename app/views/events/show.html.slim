@@ -12,5 +12,7 @@
   .card-body
     p= @event.number_of_users
     ul
-    - @event.users.each do |user|
-      li= user.email
+    - @event.guests.each do |guest|
+      li
+        => guest.user.email
+        = "(#{guest.id})"

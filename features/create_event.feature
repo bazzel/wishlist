@@ -1,3 +1,4 @@
+@javascript
 Feature: Creating an event
 
   Scenario: Add first event
@@ -26,7 +27,6 @@ Feature: Creating an event
     And I open the application
     Then I see a page with 0 events
 
-  @javascript
   Scenario: Invite guests
     Given I am adding a new event
     And I fill in "Titel" with "Awesome Event"
