@@ -89,11 +89,11 @@ RSpec.describe Event, type: :model do
       end
     end
 
-    context 'with an array of strings' do
+    context 'with a string' do
       it 'adds the users as guests' do
-        instance.guest_emails = 'jane.doe@example.org'
+        instance.guest_emails = 'jane.doe@example.org, marty@example.org'
         instance.validate
-        expect(instance.users.size).to be(1)
+        expect(instance.users.size).to be(2)
       end
     end
   end

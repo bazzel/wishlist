@@ -51,8 +51,8 @@ Feature: Editing an event
   Scenario: Keep a user
     Given I signed in
     And I have created the following events:
-      | title         | guest_emails     |
-      | Awesome Event | marty@example.org jane@example.org |
+      | title         | guest_emails                        |
+      | Awesome Event | marty@example.org, jane@example.org |
     And I open the application
     And I click "Bewerken" for event "Awesome Event"
     When I remove "marty@example.org" as guest

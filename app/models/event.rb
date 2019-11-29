@@ -23,7 +23,7 @@ class Event < ApplicationRecord
   def guest_emails=(value)
     @guest_emails = parse_tagify_json(value)
   rescue StandardError
-    @guest_emails = value.split
+    @guest_emails = value.split(/,\s*/)
   end
 
   def guest_emails
