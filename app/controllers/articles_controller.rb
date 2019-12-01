@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
   def index
   end
 
+  def new
+    @article = authorize Article.new
+  end
+
 
   private
 

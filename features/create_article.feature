@@ -13,4 +13,13 @@ Feature: Creating an article
 
   @wip
   Scenario: Add first article
+    Given I signed in
+    And I have created the following events:
+      | title          | guest_emails                        |
+      | Awesome Event  | jane@example.org                    |
+    And I open the article list for "Awesome Event"
+    When I click the "add" button
+    And I click the "add_shopping_cart" button
+    Then I am seeing a page for adding a new article
+
   Scenario: Create an article

@@ -9,7 +9,7 @@ class ArticlePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    record.invited?(user)
+  def new?
+    true
   end
 end

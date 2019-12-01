@@ -15,4 +15,20 @@ module ApplicationHelper
       end
     end
   end
+
+  def floating_action_button_w_dropdown
+    tag.div(class: 'fab-add btn-float-dropdown dropup') do
+      concat(tag.button(class: 'btn btn-float btn-secondary', aria: { expanded: false, haspopup: true }, data: { toggle: :dropdown }, type: :button) do
+        material_icon('add')
+      end)
+      concat(tag.div(class: 'dropdown-menu') do
+        concat(link_to(new_event_article_path(@event), class: 'btn btn-float btn-light btn-sm', role: :button) do
+          material_icon('add_shopping_cart')
+        end)
+        concat(tag.button(class: 'btn btn-float btn-light btn-sm', type: :button) do
+          material_icon('event')
+        end)
+      end)
+    end
+  end
 end
