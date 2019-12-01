@@ -3,6 +3,7 @@ nl:
     options: 'Opties'
     submit:
       edit: &edit 'Bewerken'
+      show: 'Openen'
       user:
         create: 'Aanmelden'
       session:

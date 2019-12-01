@@ -4,6 +4,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update]
 
+  after_action :verify_policy_scoped, only: :index
+
   def index
     @events = policy_scope(Event).decorate
   end

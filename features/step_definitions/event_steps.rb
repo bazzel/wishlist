@@ -21,6 +21,8 @@ Given('I click {string} for event {string}') do |label, title|
   within('.list-group-item', text: title) do
     click_on label
   end
+
+  @current_event = Event.find_by(title: title)
 end
 
 Then('I am seeing a page for adding a new event') do
@@ -67,5 +69,12 @@ Then('I see a page with {int} event(s)') do |items_count|
     end
   else
     expect(page).not_to have_css('.list-group')
+  end
+end
+
+
+Then("I am seeing a page with {int} guest(s)") do |items_count|
+  @current_event.guests.each do |guest|
+    expect(page).to have_content(guest.email)
   end
 end

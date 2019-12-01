@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :make_action_mailer_use_request_host_and_protocol
 
   after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
 
   helper_method :current_user
 

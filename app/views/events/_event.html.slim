@@ -16,4 +16,5 @@
         .col
           | Lorem Ipsum
     .expansion-panel-footer
+      = link_to t('helpers.submit.show'), event_articles_path(event), class: 'btn btn-outline'
       = link_to t('helpers.submit.edit'), edit_event_path(event), class: 'btn btn-outline'
