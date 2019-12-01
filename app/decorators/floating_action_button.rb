@@ -36,13 +36,19 @@ module FloatingActionButton
 
   def menu_item_new_event
     h.fab_menu_item(h.new_event_path) do
-      h.material_icon('event')
+      h.material_icon(
+        'event',
+        h.tooltipify(
+          I18n.t('events.new.title', subject: Event.model_name.human.downcase),
+          placement: :left
+        )
+      )
     end
   end
 
   def menu_item_new_article
     h.fab_menu_item(h.new_event_article_path(model)) do
-      h.material_icon('add_shopping_cart')
+      h.material_icon('add_shopping_cart', h.tooltipify(I18n.t('articles.new.title')))
     end
   end
 end
