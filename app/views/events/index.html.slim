@@ -1,3 +1,3 @@
-- content_for(:floating_action_button) { floating_action_button }
+- content_for(:floating_action_button) { EventDecorator.floating_action_button }
 
 = render(partial: 'results', object: @events, layout: 'results_layout', locals: { parent: 'events' })

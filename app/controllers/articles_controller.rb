@@ -2,15 +2,13 @@
 
 #:nodoc:
 class ArticlesController < ApplicationController
-  before_action :set_event, only: %i[index show edit update]
+  before_action :set_event, only: %i[index new]
 
-  def index
-  end
+  def index; end
 
   def new
     @article = authorize Article.new
   end
-
 
   private
 

@@ -72,8 +72,7 @@ Then('I see a page with {int} event(s)') do |items_count|
   end
 end
 
-
-Then("I am seeing a page with {int} guest(s)") do |items_count|
+Then('I am seeing a page with {int} guest(s)') do |_items_count|
   @current_event.guests.each do |guest|
     expect(page).to have_content(guest.email)
   end

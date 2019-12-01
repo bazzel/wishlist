@@ -16,10 +16,9 @@ When('I navigate to the events page') do
   visit '/events'
 end
 
-
-Given("I open the article list for {string}") do |event_title|
+Given('I open the article list for {string}') do |event_title|
   step 'I open the application'
-  step %Q(I click "Openen" for event "#{event_title}")
+  step %(I click "Openen" for event "#{event_title}")
 end
 
 Then("I'm being redirected to the sign in page") do

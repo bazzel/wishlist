@@ -13,7 +13,6 @@ Feature: Creating an event
     And I click "Opslaan"
     Then I am viewing the event
     And I can edit the event
-    And I am seeing the button for adding a new event
 
   Scenario: Event is not visible to others
     Given I signed in
