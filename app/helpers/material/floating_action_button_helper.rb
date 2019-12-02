@@ -44,8 +44,11 @@ module Material
       options
     end
 
-    def fab_menu_item(path)
-      link_to(path, class: fab_class('btn-light btn-sm'), role: :button) do
+    def fab_menu_item(path, options = {})
+      options.merge!({
+        class: fab_class('btn-light btn-sm'), role: :button
+      })
+      link_to(path, options) do
         yield
       end
     end

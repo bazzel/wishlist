@@ -29,8 +29,8 @@ module FloatingActionButton
 
   def dropdown
     h.fab_dropdown_wrapper do
-      h.concat menu_item_new_event
       h.concat menu_item_new_article
+      h.concat menu_item_new_event
     end
   end
 
@@ -47,7 +47,7 @@ module FloatingActionButton
   end
 
   def menu_item_new_article
-    h.fab_menu_item(h.new_event_article_path(model)) do
+    h.fab_menu_item('#', data: { toggle: 'modal', target: '#newArticle' }) do
       h.material_icon('add_shopping_cart', h.tooltipify(I18n.t('articles.new.title')))
     end
   end
