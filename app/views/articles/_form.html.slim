@@ -1,7 +1,7 @@
 .modal.fade(id=new_article_modal_id data={ controller: 'modal' } aria={ hidden: true, labelledby: new_article_modal_id } role='dialog' tabindex=-1)
   .modal-dialog.modal-dialog-centered(role='document')
     .modal-content
-      = simple_form_for([event, article], html: { autocomplete: 'off' }) do |f|
+      = simple_form_for([event, article], remote: true, html: { autocomplete: 'off' }) do |f|
         .modal-header
           h5.modal-title= t('articles.new.title', subject: Article.model_name.human.downcase)
           = close_icon(tooltipify(t('articles.new.cancel', subject: Article.model_name.human.downcase), dismiss: 'modal'))
@@ -10,6 +10,6 @@
 
         .modal-footer
           = link_to I18n.t('helpers.submit.cancel'), '#', class: 'btn', role: :button, data: { dismiss: 'modal' }
-          = f.button :submit, class: 'btn btn-outline-primary'
+          = f.button :submit, class: 'btn btn-outline-primary', data: { target: "##{new_article_modal_id}", toggle: 'modal' }
 
 

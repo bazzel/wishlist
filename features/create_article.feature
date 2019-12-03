@@ -21,7 +21,6 @@ Feature: Creating an article
     And I click the "add_shopping_cart" button
     Then I am seeing a modal for adding a new article
 
-  @wip
   Scenario: Create an article
     Given I signed in
     And I have created the following events:

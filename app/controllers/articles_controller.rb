@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article = authorize guest.articles.build(article_params)
 
     if @article.save
-      redirect_to event_articles_path(@event)
+      redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
     else
       render :new
     end
@@ -25,7 +25,13 @@ class ArticlesController < ApplicationController
   private
 
   def set_event
-    @event = authorize(Event.find_by(slug: params[:event_slug]).decorate, :show?)
+    @event = authorize(
+      Event
+        .includes(guests: %i[user articles])
+        .find_by(slug: params[:event_slug])
+        .decorate,
+      :show?
+    )
   end
 
   def article_params

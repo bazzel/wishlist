@@ -8,4 +8,6 @@ RSpec.describe Guest, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:articles).dependent(:destroy) }
   end
+
+  it { is_expected.to delegate_method(:email).to(:user) }
 end

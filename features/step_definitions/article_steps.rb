@@ -8,7 +8,7 @@ end
 
 Then('I am seeing a modal for adding a new article') do
   expect(current_path).to match(%r{/events/#{@current_event.slug}/articles})
-  expect(page).to have_css('#newArticle.modal', visible: true)
+  expect(page).to have_css('#new_article_modal.modal', visible: true)
 end
 
 Then('I am having {int} article(s)') do |articles_count|
