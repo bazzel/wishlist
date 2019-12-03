@@ -47,7 +47,7 @@ module FloatingActionButton
   end
 
   def menu_item_new_article
-    h.fab_menu_item('#', data: { toggle: 'modal', target: '#newArticle' }) do
+    h.fab_menu_item(h.new_event_article_path(model), remote: true) do
       h.material_icon('add_shopping_cart', h.tooltipify(I18n.t('articles.new.title')))
     end
   end

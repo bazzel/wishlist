@@ -4,6 +4,7 @@ nl:
     submit:
       edit: &edit 'Bewerken'
       show: 'Openen'
+      cancel: 'Annuleren'
       user:
         create: 'Aanmelden'
       session:
@@ -11,11 +12,14 @@ nl:
       event:
         create: &save 'Opslaan'
         update: *save
+      article:
+        create: *save
 
   activerecord:
     models:
       event: 'Afspraak'
       guest: 'Gast'
+      article: 'Artikel'
     attributes:
       event:
         title: 'Titel'
@@ -53,6 +57,10 @@ nl:
       edit: *edit
     create:
       cancel: *cancel_event_creation
+  articles:
+    new:
+      title: 'Een nieuw %{subject} toevoegen'
+      cancel: &cancel_article_creation 'Maken van %{subject} annuleren'
   # mailers:
   sessions_mailer:
     magic_link:

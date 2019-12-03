@@ -1,0 +1,3 @@
+var el = document.getElementById('new_article_modal');
+el.outerHTML = '<%= j render(partial: 'form', locals: { event: @event, article: @article }) %>';
+$(`#${el.id}`).modal('show');

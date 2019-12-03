@@ -6,17 +6,7 @@ h1= @event.title
   h2.h5
     = guest.user.email
 
-#newArticle.modal.fade(aria={ hidden: true, labelledby: 'newArticle' } role='dialog' tabindex=-1)
-  .modal-dialog.modal-dialog-centered(role='document')
-    .modal-content
-      = simple_form_for([@event, Article.new], html: { autocomplete: 'off' }) do |f|
-        .modal-header
-          h5#exampleModalLabel.modal-title Modal title
-          = close_icon(data: { dismiss: 'modal' })
-        .modal-body
-          = f.input :title, autofocus: true
+    - guest.articles.each do |article|
+      .list-group-item= article.title
 
-        .modal-footer
-          button.btn.btn-secondary data-dismiss="modal" type="button" Close
-          = f.button :submit, class: 'btn btn-outline-primary'
-
+= render(partial: 'form', locals: { event: @event, article: Article.new })

@@ -2,10 +2,10 @@
 
 Given('I fill in {string} with {string}') do |label, value|
   label_to_placeholder_mapping = {
-    'Titel' => 'event_title'
+    'Titel' => 'title'
   }
 
-  fill_in label_to_placeholder_mapping[label], with: value
+  find("[name$='[#{label_to_placeholder_mapping[label]}]']").fill_in with: value
 end
 
 When('I add {string} as guest') do |text|
