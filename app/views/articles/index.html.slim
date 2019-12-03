@@ -9,4 +9,4 @@ h1= @event.title
     - guest.articles.each do |article|
       .list-group-item= article.title
 
-= render(partial: 'form', locals: { event: @event, article: Article.new })
+div(id=new_article_modal_id)

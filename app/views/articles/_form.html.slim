@@ -1,4 +1,4 @@
-#new_article_modal.modal.fade(aria={ hidden: true, labelledby: 'new_article_modal' } role='dialog' tabindex=-1)
+.modal.fade(id=new_article_modal_id data={ controller: 'modal' } aria={ hidden: true, labelledby: new_article_modal_id } role='dialog' tabindex=-1)
   .modal-dialog.modal-dialog-centered(role='document')
     .modal-content
       = simple_form_for([event, article], html: { autocomplete: 'off' }) do |f|
