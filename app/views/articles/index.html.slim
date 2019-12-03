@@ -3,10 +3,10 @@
 h1= @event.title
 
 - @event.guests.each do |guest|
-  h2.h5
+  h2.h5.px-4.mt-2
     = guest.user.email
 
-    - guest.articles.each do |article|
-      .list-group-item= article.title
+  - guest.articles.each do |article|
+    .list-group-item= article.title
 
 div(id=new_article_modal_id)

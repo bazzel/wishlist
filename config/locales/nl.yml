@@ -24,6 +24,8 @@ nl:
       event:
         title: 'Titel'
         guest_emails: 'Gasten'
+      article:
+        title: 'Artikel'
     errors:
       models:
         user:

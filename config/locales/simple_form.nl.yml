@@ -35,4 +35,5 @@ nl:
       event:
         title: 'Titel toevoegen'
         guest_emails: 'Gasten toevoegen'
-
+      article:
+        title: 'Artikel toevoegen'
