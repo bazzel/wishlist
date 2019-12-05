@@ -37,3 +37,4 @@ nl:
         guest_emails: 'Gasten toevoegen'
       article:
         title: 'Artikel toevoegen'
+        price: 'Prijs toevoegen'

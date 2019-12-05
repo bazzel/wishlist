@@ -26,6 +26,7 @@ nl:
         guest_emails: 'Gasten'
       article:
         title: 'Artikel'
+        price: 'Prijs'
     errors:
       models:
         user:
@@ -39,6 +40,11 @@ nl:
             guest_emails:
               format: '%{message}'
               invalid: '1 of meer gasten heeft een ongeldig e-mailadres'
+        article:
+          attributes:
+            price:
+              greater_than: 'moet hoger zijn dan € %{count}'
+              less_than: 'moet lager zijn dan € %{count}'
 
   sessions:
     new:

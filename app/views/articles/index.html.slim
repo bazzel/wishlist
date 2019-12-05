@@ -7,6 +7,9 @@ h1= @event.title
     = guest.user.email
 
   - guest.articles.each do |article|
-    .list-group-item= article.title
+    .list-group-item
+      .media-body.row
+        .col-sm-4.text-truncate= article.title
+        .col-sm= number_to_currency(article.price)
 
 div(id=new_article_modal_id)

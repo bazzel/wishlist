@@ -14,20 +14,22 @@ Feature: Creating an article
   Scenario: Add first article
     Given I signed in
     And I have created the following events:
-      | title          | guest_emails                        |
-      | Awesome Event  | jane@example.org                    |
+      | title         | guest_emails     |
+      | Awesome Event | jane@example.org |
     And I open the article list for "Awesome Event"
     When I click the "add" button
     And I click the "add_shopping_cart" button
     Then I am seeing a modal for adding a new article
 
+  @wip
   Scenario: Create an article
     Given I signed in
     And I have created the following events:
-      | title          | guest_emails                        |
-      | Awesome Event  | jane@example.org                    |
+      | title         | guest_emails     |
+      | Awesome Event | jane@example.org |
     And I am adding a new article for "Awesome Event"
     When I fill in "Titel" with "Awesome Article"
+    And I fill in "Price" with "25"
     And I click "Opslaan"
     Then I am seeing a page with 3 guests
     And I am having 1 article
