@@ -3,7 +3,8 @@
 Given('I fill in {string} with {string}') do |label, value|
   label_to_placeholder_mapping = {
     'Titel' => 'title',
-    'Price' => 'price'
+    'Omschrijving' => 'description',
+    'Prijs' => 'price'
   }
 
   find("[name$='[#{label_to_placeholder_mapping[label]}]']").fill_in with: value

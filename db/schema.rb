@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_153716) do
+ActiveRecord::Schema.define(version: 2019_12_07_131940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_153716) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 7, scale: 2
+    t.string "description", limit: 1024
     t.index ["guest_id"], name: "index_articles_on_guest_id"
   end
 

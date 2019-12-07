@@ -26,6 +26,7 @@ nl:
         guest_emails: 'Gasten'
       article:
         title: 'Artikel'
+        description: 'Omschrijving'
         price: 'Prijs'
     errors:
       models:
