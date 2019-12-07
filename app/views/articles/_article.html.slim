@@ -1,0 +1,10 @@
+.expansion-panel.list-group-item
+  .expansion-panel-toggler.collapsed(data={ toggle: 'collapse', target: "##{article.dom_id(:collapse)}" })
+    .media-body.row
+      .col-sm-4.text-truncate= article.title
+      .col-sm= number_to_currency(article.price)
+  .collapse(id=article.dom_id(:collapse) data-parent="##{parent}")
+    .expansion-panel-body
+      = simple_format article.description
+
+

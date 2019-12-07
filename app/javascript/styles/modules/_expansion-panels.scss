@@ -1,0 +1,8 @@
+.expansion-panel {
+  &.show {
+    margin: {
+      left: -1 * $expansion-panel-padding-x;
+      right: -1 * $expansion-panel-padding-x;
+    }
+  }
+}

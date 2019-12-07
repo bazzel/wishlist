@@ -4,6 +4,8 @@
 class EventDecorator < ApplicationDecorator
   include FloatingActionButton
   delegate_all
+  decorates_association :articles
+  decorates_association :guests
 
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:

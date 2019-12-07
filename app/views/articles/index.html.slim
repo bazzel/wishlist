@@ -6,10 +6,6 @@ h1= @event.title
   h2.h5.px-4.mt-2
     = guest.user.email
 
-  - guest.articles.each do |article|
-    .list-group-item
-      .media-body.row
-        .col-sm-4.text-truncate= article.title
-        .col-sm= number_to_currency(article.price)
+  = render partial: 'articles', object: guest.articles, layout: 'articles_layout', locals: { parent: 'articles' }
 
 div(id=new_article_modal_id)
