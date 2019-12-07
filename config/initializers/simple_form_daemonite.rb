@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
- Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 
 SimpleForm.setup do |config|
   # Custom wrapper to support text field boxes
