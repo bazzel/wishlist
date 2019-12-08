@@ -99,4 +99,30 @@ RSpec.describe Event, type: :model do
       end
     end
   end
+
+  describe '#store_names' do
+    subject(:store_names) { instance.store_names }
+
+    before do
+      me_guest = instance.guests.create(user: me)
+      me_guest.articles.create(title: 'Lorem', stores: [hema, blokker])
+      me_guest.articles.create(title: 'Ipsum', stores: [blokker])
+
+      you_guest = instance.guests.create(user: you)
+      you_guest.articles.create(title: 'Lorem', stores: [wibra, blokker])
+      you_guest.articles.create(title: 'Ipsum', stores: [hema])
+    end
+
+    let(:instance) { create(:event, users: [me]) }
+    let(:me)       { create(:user) }
+    let!(:you)     { create(:user) }
+    let(:hema)     { create(:store, name: 'HEMA') }
+    let(:blokker)  { create(:store, name: 'Blokker') }
+    let(:wibra)    { create(:store, name: 'Wibra') }
+    let(:zeeman)   { create(:store, name: 'Zeeman') }
+
+    it 'returns an array of stores references by articles listed in the event' do
+      expect(store_names).to contain_exactly('HEMA', 'Blokker', 'Wibra')
+    end
+  end
 end

@@ -32,6 +32,10 @@ class Event < ApplicationRecord
     @guest_emails ||= users.map(&:email)
   end
 
+  def store_names
+    stores.distinct.pluck(:name)
+  end
+
   private
 
   def set_slug
