@@ -15,3 +15,18 @@
     }
   }
 }
+.expansion-panel-toggler {
+  .actions {
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &.collapsed-show {
+    .actions {
+      visibility: hidden;
+    }
+    &:hover .actions {
+      visibility: visible;
+    }
+  }
+}
