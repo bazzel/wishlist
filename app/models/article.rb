@@ -2,7 +2,7 @@
 
 #:nodoc:
 class Article < ApplicationRecord
-  has_and_belongs_to_many :stores
+  has_and_belongs_to_many :stores # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :guest
 
   validates :title, presence: true, length: { maximum: 255 }
@@ -16,14 +16,12 @@ class Article < ApplicationRecord
   end
 
   def store_names=(value)
-    begin
-      @store_names = parse_tagify_json(value)
-    rescue
-      @store_names = value.split(/,\s*/)
-    end
+    @store_names = parse_tagify_json(value)
+  rescue StandardError
+    @store_names = value.split(/,\s*/)
   end
 
-private
+  private
 
   def parse_tagify_json(value)
     JSON.parse(value).map { |h| h['value'] }

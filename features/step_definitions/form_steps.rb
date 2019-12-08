@@ -22,8 +22,7 @@ When('I remove {string} as guest') do |text|
   sleep 0.5
 end
 
-
-When("I add the stores {string}") do |text|
+When('I add the stores {string}') do |text|
   tags = text.split(/\s*,\s*/)
 
   tags.each do |tag|
