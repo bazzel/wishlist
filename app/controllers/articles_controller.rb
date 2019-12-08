@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
   def set_event
     @event = authorize(
       Event
-        .includes(guests: %i[user articles])
+        .includes(:stores, guests: %i[user articles])
         .find_by(slug: params[:event_slug])
         .decorate,
       :show?
