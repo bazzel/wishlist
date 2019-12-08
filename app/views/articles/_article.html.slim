@@ -2,11 +2,12 @@
   .expansion-panel-toggler.collapsed.collapsed-show(data={ toggle: 'collapse', target: "##{article.dom_id(:collapse)}" })
     .media-body.row
       .col-sm-4.text-truncate= article.title
-      .col-sm= number_to_currency(article.price)
+      .col-sm-2= number_to_currency(article.price)
+      .col-sm= article.stores.map(&:name).to_sentence
   .expansion-panel-toggler.collapsed.collapsed-hide(data={ toggle: 'collapse', target: "##{article.dom_id(:collapse)}" })
     .media-body.row
       .col
-        h2.h4.text-truncate= article.title
+        h3.h4= article.title
   .collapse(id=article.dom_id(:collapse) data-parent="##{parent}")
     .expansion-panel-body
       = simple_format article.description

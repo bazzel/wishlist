@@ -21,3 +21,16 @@ When('I remove {string} as guest') do |text|
   el.find('x').click
   sleep 0.5
 end
+
+
+When("I add the stores {string}") do |text|
+  tags = text.split(/\s*,\s*/)
+
+  tags.each do |tag|
+    within('form .article_store_names') do
+      el = find('.tagify__input')
+      el.set("#{tag}\n")
+      el.send_keys(:enter)
+    end
+  end
+end

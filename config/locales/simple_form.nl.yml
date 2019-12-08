@@ -39,3 +39,4 @@ nl:
         title: 'Artikel toevoegen'
         description: 'Omschrijving toevoegen'
         price: 'Prijs toevoegen'
+        store_names: 'Winkels toevoegen'

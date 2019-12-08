@@ -12,6 +12,7 @@ RSpec.describe Event, type: :model do
     it { is_expected.to have_many(:guests).dependent(:destroy) }
     it { is_expected.to have_many(:users).through(:guests) }
     it { is_expected.to have_many(:articles).through(:guests) }
+    it { is_expected.to have_many(:stores).through(:articles) }
   end
 
   describe 'scopes' do

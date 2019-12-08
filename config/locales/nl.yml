@@ -46,6 +46,9 @@ nl:
             price:
               greater_than: 'moet hoger zijn dan € %{count}'
               less_than: 'moet lager zijn dan € %{count}'
+            store_names:
+              format: '%{message}'
+              invalid: '1 of meer winkels heeft een ongeldige naam'
 
   sessions:
     new:

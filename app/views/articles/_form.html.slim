@@ -9,6 +9,7 @@
           = f.input :title
           = f.input :description, as: :text
           = f.input :price, input_html: { min: 0 }, wrapper: :input_group, prepend: '€'
+          = f.input :store_names, input_html: { value: article.store_names.to_s, data: { controller: 'chip-input', whitelist: event.stores.distinct.pluck(:name).join(',') }}
 
         .modal-footer
           = link_to t('helpers.submit.cancel'), '#', class: 'btn', role: :button, data: { dismiss: 'modal' }

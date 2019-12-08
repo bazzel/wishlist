@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests
   has_many :articles, through: :guests
+  has_many :stores, through: :articles
 
   before_create :set_slug
   before_validation :set_users

@@ -21,6 +21,7 @@ Feature: Creating an article
     And I click the "add_shopping_cart" button
     Then I am seeing a modal for adding a new article
 
+  @wip
   Scenario: Create an article
     Given I signed in
     And I have created the following events:
@@ -30,6 +31,7 @@ Feature: Creating an article
     When I fill in "Titel" with "Awesome Article"
     And I fill in "Prijs" with "25"
     And I fill in "Omschrijving" with "A very awesome article. At least, that's what I think..."
+    And I add the stores "Hema, Blokker"
     And I click "Opslaan"
     Then I am seeing a page with 3 guests
     And I am having 1 article
