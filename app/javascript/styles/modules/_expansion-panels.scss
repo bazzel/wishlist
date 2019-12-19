@@ -1,9 +1,18 @@
 .expansion-panel {
+  cursor: pointer;
+
   &.show {
-    margin: {
-      left: -1 * $expansion-panel-padding-x;
-      right: -1 * $expansion-panel-padding-x;
+    &.stretchable {
+      margin: {
+        left: -1 * $expansion-panel-padding-x;
+        right: -1 * $expansion-panel-padding-x;
+      }
     }
+
+    .actions {
+      visibility: visible;
+    }
+
     .collapsed-show {
       display: none;
     }
@@ -14,19 +23,15 @@
       display: none;
     }
   }
-}
-.expansion-panel-toggler {
+
   .actions {
-    top: 0;
-    right: 0;
     bottom: 0;
+    right: 0;
+    top: 0;
+    visibility: hidden;
   }
-  &.collapsed-show {
-    .actions {
-      visibility: hidden;
-    }
-    &:hover .actions {
-      visibility: visible;
-    }
+
+  &:hover .actions {
+    visibility: visible;
   }
 }

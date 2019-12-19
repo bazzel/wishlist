@@ -1,16 +1,15 @@
-.expansion-panel.list-group-item(data-controller='expansion-panel')
-  .expansion-panel-toggler.collapsed.collapsed-show.position-relative(data={ toggle: 'collapse', target: "##{article.dom_id(:collapse)}" })
-    .media-body.row
-      .col-sm-4.text-truncate= article.title
-      .col-sm-2= number_to_currency(article.price)
-      .col-sm= article.store_names.to_sentence
-    .actions.position-absolute.d-flex.align-items-center.justify-content-end.mr-4(data-target='expansion-panel.actions')
-      = link_to material_icon('create'), edit_article_path(article), class: sm_rnd_btn_class, role: :button
-  .expansion-panel-toggler.collapsed.collapsed-hide(data={ toggle: 'collapse', target: "##{article.dom_id(:collapse)}" })
-    .d-flex.justify-content-between.w-100
-      h3.h4= article.title
-      .actions.d-flex.align-items-center.justify-content-end(data-target='expansion-panel.actions')
-        = link_to material_icon('create'), edit_article_path(article), class: sm_rnd_btn_class, role: :button
-  .collapse(id=article.dom_id(:collapse) data-parent="##{parent}")
+.expansion-panel.list-group-item.stretchable(data={ controller: 'expansion-panel', action: 'click->expansion-panel#toggle', target: "##{article.dom_id(:collapse)}" })
+  .expansion-panel-toggler.collapsed.position-relative
+    .media-body
+      .row.collapsed-show
+        .col-sm-4.text-truncate= article.title
+        .col-sm-2= number_to_currency(article.price)
+        .col-sm= article.store_names.to_sentence
+      .row.collapsed-hide
+        .col-11
+          h3.mb-0= article.title
+    .actions.d-flex.align-items-center.mr-1.position-absolute(data={ toggle: 'no-collapse' })
+      = link_to material_icon('create'), edit_article_path(article), remote: true, class: sm_rnd_btn_class, role: :button
+  .collapse(id=article.dom_id(:collapse) data={ parent: "##{parent}" })
     .expansion-panel-body
       = simple_format article.description
