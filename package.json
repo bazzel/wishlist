@@ -9,6 +9,7 @@
     "@yaireo/tagify": "^2.31.4",
     "bootstrap": "^4.3.1",
     "daemonite-material": "^4.1.1",
+    "expose-loader": "^0.7.5",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "stimulus": "^1.1.1",

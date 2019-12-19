@@ -3,11 +3,16 @@
 #:nodoc:
 class ArticlesController < ApplicationController
   before_action :set_event, only: %i[index new create]
+  before_action :set_article, only: %i[edit update]
 
   def index; end
 
   def new
     @article = authorize Article.new
+  end
+
+  def edit
+
   end
 
   def create
@@ -22,6 +27,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def update
+    @event = @article.event.decorate
+
+    if @article.update(article_params)
+      redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
+    end
+  end
+
   private
 
   def set_event
@@ -32,6 +45,12 @@ class ArticlesController < ApplicationController
         .decorate,
       :show?
     )
+    @store_names = @event.store_names
+  end
+
+  def set_article
+    @article = authorize Article.find(params[:id])
+    @store_names = @article.event.store_names
   end
 
   def article_params

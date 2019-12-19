@@ -1,0 +1,4 @@
+var el = document.getElementById('<%= new_article_modal_id %>');
+el.outerHTML = '<%= j render(partial: 'form', locals: { event: nil, article: @article }) %>';
+
+// Stimulus controller handles the rest.

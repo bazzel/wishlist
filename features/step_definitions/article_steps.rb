@@ -15,3 +15,26 @@ Then('I am having {int} article(s)') do |articles_count|
   # TODO: make this more specific
   expect(page).to have_css('.list-group-item', count: articles_count)
 end
+
+
+Given("I have created the following articles:") do |table|
+  current_user = User.find_by(email: @current_user_email)
+
+  table.hashes.each do |hash|
+    event = Event.find_or_create_by(title: hash.delete('event'))
+
+    unless event.invited?(current_user)
+      event.users << current_user
+      event.save
+    end
+
+    guest = event.guests.find_by(user: current_user)
+
+    hash[:guest] = guest
+    create(:article, hash)
+  end
+end
+
+Given("I hover over the article {string}") do |title|
+  find('.list-group-item', text: title).hover
+end
