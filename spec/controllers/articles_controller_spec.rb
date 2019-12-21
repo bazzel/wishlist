@@ -6,7 +6,7 @@ RSpec.describe ArticlesController, type: :controller do
   let(:current_user)  { create :user }
   let(:valid_session) { { user_id: current_user.id } }
   let(:event)         { create :event, guest_emails: [current_user.email] }
-  let!(:article)      { create:article, guest: event.guests.first }
+  let!(:article)      { create :article, guest: event.guests.first }
 
   describe 'GET #index' do
     def do_get

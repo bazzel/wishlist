@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     @article = authorize guest.articles.build(article_params)
 
     if @article.save
-      redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
+      redirect_to_index(@event)
     else
       @article = @article.decorate
       render :new
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to event_articles_path(@article.event), notice: t('.notice', title: @article.title)
+      redirect_to_index(@article.event)
     else
       render :edit
     end
@@ -49,12 +49,16 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = authorize Article
-      .find_by(slug: params[:slug])
-      .decorate
+               .find_by(slug: params[:slug])
+               .decorate
     @store_names = @article.event.store_names
   end
 
   def article_params
     params.require(:article).permit(:title, :description, :price, :store_names)
+  end
+
+  def redirect_to_index(event)
+    redirect_to event_articles_path(event), notice: t('.notice', title: @article.title)
   end
 end
