@@ -16,20 +16,19 @@ class ArticlesController < ApplicationController
   def create
     guest = @event.guests.find_by(user: current_user)
 
-    @article = authorize guest.articles.build(article_params).decorate
+    @article = authorize guest.articles.build(article_params)
 
     if @article.save
       redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
     else
+      @article = @article.decorate
       render :new
     end
   end
 
   def update
-    @event = @article.event.decorate
-
     if @article.update(article_params)
-      redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
+      redirect_to event_articles_path(@article.event), notice: t('.notice', title: @article.title)
     else
       render :edit
     end
@@ -49,7 +48,9 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = authorize Article.find(params[:id]).decorate
+    @article = authorize Article
+      .find_by(slug: params[:slug])
+      .decorate
     @store_names = @article.event.store_names
   end
 

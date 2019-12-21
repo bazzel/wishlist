@@ -76,6 +76,8 @@ nl:
       cancel: &cancel_article_creation 'Maken van %{subject} annuleren'
     create:
       notice: "Artikel '%{title}' is toegevoegd"
+    update:
+      notice: "Artikel '%{title}' is bijgewerkt"
   # mailers:
   sessions_mailer:
     magic_link:

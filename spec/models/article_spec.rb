@@ -26,7 +26,6 @@ RSpec.describe Article, type: :model do
           instance.store_names = [{ value: store.name }].to_json
           instance.validate
           expect(instance.stores.size).to be(1)
-          # expect(Writer.count).not_to change
         end
       end
 

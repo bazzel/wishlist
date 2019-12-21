@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
 
   resources :events, param: :slug do
-    resources :articles, shallow: true
+    resources :articles, param: :slug, shallow: true
   end
 
   root to: 'events#index'
