@@ -8,17 +8,15 @@ class ArticlesController < ApplicationController
   def index; end
 
   def new
-    @article = authorize Article.new
+    @article = authorize Article.new.decorate
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def create
     guest = @event.guests.find_by(user: current_user)
 
-    @article = authorize guest.articles.build(article_params)
+    @article = authorize guest.articles.build(article_params).decorate
 
     if @article.save
       redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
@@ -32,6 +30,8 @@ class ArticlesController < ApplicationController
 
     if @article.update(article_params)
       redirect_to event_articles_path(@event), notice: t('.notice', title: @article.title)
+    else
+      render :edit
     end
   end
 
@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = authorize Article.find(params[:id])
+    @article = authorize Article.find(params[:id]).decorate
     @store_names = @article.event.store_names
   end
 

@@ -2,10 +2,12 @@
   cursor: pointer;
 
   &.show {
-    &.stretchable {
-      margin: {
-        left: -1 * $expansion-panel-padding-x;
-        right: -1 * $expansion-panel-padding-x;
+    @include media-breakpoint-up(sm) {
+      &.stretchable {
+        margin: {
+          left: -1 * $expansion-panel-padding-x;
+          right: -1 * $expansion-panel-padding-x;
+        }
       }
     }
 

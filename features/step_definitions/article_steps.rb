@@ -8,7 +8,7 @@ end
 
 Then('I am seeing a modal for adding a new article') do
   expect(current_path).to match(%r{/events/#{@current_event.slug}/articles})
-  expect(page).to have_css('#new_article_modal.modal', visible: true)
+  step %(I see a modal with "Een nieuw artikel toevoegen" as title)
 end
 
 Then('I am having {int} article(s)') do |articles_count|
@@ -16,8 +16,7 @@ Then('I am having {int} article(s)') do |articles_count|
   expect(page).to have_css('.list-group-item', count: articles_count)
 end
 
-
-Given("I have created the following articles:") do |table|
+Given('I have created the following articles:') do |table|
   current_user = User.find_by(email: @current_user_email)
 
   table.hashes.each do |hash|
@@ -35,6 +34,6 @@ Given("I have created the following articles:") do |table|
   end
 end
 
-Given("I hover over the article {string}") do |title|
+Given('I hover over the article {string}') do |title|
   find('.list-group-item', text: title).hover
 end
