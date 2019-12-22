@@ -15,6 +15,13 @@ RSpec.describe Article, type: :model do
     it { is_expected.to belong_to(:guest) }
   end
 
+  describe 'delegation' do
+    subject(:instance) { create :article }
+
+    it { expect(instance.event).to eql(instance.guest.event) }
+    it { expect(instance.user).to eql(instance.guest.user) }
+  end
+
   describe '#slug' do
     subject(:instance) { create :article }
 

@@ -13,7 +13,7 @@ class Article < ApplicationRecord
 
   before_validation :set_stores
 
-  delegate :event, to: :guest
+  delegate :event, :user, to: :guest
 
   def store_names
     @store_names ||= stores.map(&:name)

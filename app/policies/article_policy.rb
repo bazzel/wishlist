@@ -10,7 +10,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.guest.user == user
   end
 
   def create?
