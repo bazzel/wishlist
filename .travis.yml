@@ -12,6 +12,10 @@ before_script:
   - bin/rails assets:precompile
 script:
   - bin/rails ci
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
 services:
   - postgresql
