@@ -9,7 +9,8 @@
         .col-11
           h3.mb-0= article.title
     .actions.d-flex.align-items-center.mr-1.position-absolute(data={ toggle: 'no-collapse' })
-      = link_to material_icon('create'), edit_article_path(article), remote: true, class: sm_rnd_btn_class, role: :button
+      - if policy(article).edit?
+        = link_to material_icon('create'), edit_article_path(article), remote: true, class: sm_rnd_btn_class, role: :button
   .collapse(id=article.dom_id(:collapse) data={ parent: "##{parent}" })
     .expansion-panel-body
       = simple_format article.description
