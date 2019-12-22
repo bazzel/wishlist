@@ -2,6 +2,8 @@
 
 #:nodoc:
 class Article < ApplicationRecord
+  include Sluggable
+
   has_and_belongs_to_many :stores # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :guest
 
@@ -9,14 +11,9 @@ class Article < ApplicationRecord
   validates :description, length: { maximum: 2**10 }
   validates :price, numericality: { greater_than: 0, less_than: 100_000 }, allow_nil: true
 
-  before_create :set_slug
   before_validation :set_stores
 
   delegate :event, to: :guest
-
-  def to_param
-    slug
-  end
 
   def store_names
     @store_names ||= stores.map(&:name)
@@ -29,13 +26,6 @@ class Article < ApplicationRecord
   end
 
   private
-
-  def set_slug
-    loop do
-      self.slug = SecureRandom.uuid
-      break unless self.class.where(slug: slug).exists?
-    end
-  end
 
   def parse_tagify_json(value)
     JSON.parse(value).map { |h| h['value'] }

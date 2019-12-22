@@ -15,6 +15,12 @@ RSpec.describe Article, type: :model do
     it { is_expected.to belong_to(:guest) }
   end
 
+  describe '#slug' do
+    subject(:instance) { create :article }
+
+    it { expect(instance.slug).not_to be_nil }
+  end
+
   describe '#store_names=' do
     let(:instance) { build :article }
 

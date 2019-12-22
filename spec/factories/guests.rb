@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :guest do
-    event { nil }
-    user { nil }
+    event
+    user
   end
 end

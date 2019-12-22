@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :article do
     title { 'MyString' }
-    guest { nil }
+    guest
   end
 end
