@@ -4,7 +4,7 @@
       = simple_form_for([event, article], remote: true, html: { autocomplete: 'off' }) do |f|
         .modal-header
           h5.modal-title= article.form_title
-          = close_icon(tooltipify(t('articles.new.cancel', subject: Article.model_name.human.downcase), dismiss: 'modal'))
+          = close_icon(tooltipify(t("articles.#{action_name}.cancel", subject: Article.model_name.human.downcase), dismiss: 'modal'))
         .modal-body
           = f.input :title
           = f.input :description, as: :text

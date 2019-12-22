@@ -73,7 +73,10 @@ nl:
   articles:
     new:
       title: 'Een nieuw %{subject} toevoegen'
-      cancel: &cancel_article_creation 'Maken van %{subject} annuleren'
+      cancel: 'Maken van %{subject} annuleren'
+    edit:
+      title: '%{subject} bewerken'
+      cancel: 'Artikelwijzigingen annuleren'
     create:
       notice: "Artikel '%{title}' is toegevoegd"
     update:
