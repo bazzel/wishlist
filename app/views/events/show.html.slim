@@ -3,11 +3,7 @@
     div
       h1.card-title.mb-1= @event.title
 
-    .dropdown
-      button(class=sm_rnd_btn_class aria={ expanded: false, haspopup: true } data-toggle='dropdown' type='button')
-        = material_icon('more_vert', tooltipify(t('helpers.options')))
-      .dropdown-menu.dropdown-menu-right
-        = link_to t('.edit'), edit_event_path(@event), class: 'dropdown-item'
+    = @event.hamburger_menu
 
   .card-body
     p= @event.number_of_users

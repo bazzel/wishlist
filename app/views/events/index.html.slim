@@ -1,3 +1,6 @@
 - content_for(:floating_action_button) { EventDecorator.floating_action_button }
 
-= render(partial: 'results', object: @events, layout: 'results_layout', locals: { parent: 'events' })
+h1= Event.model_name.human.pluralize(I18n.locale)
+
+.card-columns
+  = render @events

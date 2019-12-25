@@ -16,9 +16,8 @@ Given('I have created the following events:') do |table|
 end
 
 Given('I click {string} for event {string}') do |label, title|
-  step %(I expand the panel for "#{title}")
-
-  within('.list-group-item', text: title) do
+  within('.card', text: title) do
+    click_on 'more_vert'
     click_on label
   end
 
@@ -62,11 +61,11 @@ end
 
 Then('I see a page with {int} event(s)') do |items_count|
   if items_count.nonzero?
-    within('.list-group') do
-      expect(page).to have_css('.list-group-item', count: items_count)
+    within('.card-columns') do
+      expect(page).to have_css('.card', count: items_count)
     end
   else
-    expect(page).not_to have_css('.list-group')
+    expect(page).not_to have_css('.card-columns')
   end
 end
 

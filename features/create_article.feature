@@ -8,7 +8,7 @@ Feature: Creating an article
       | Awesome Event  | jane@example.org                    |
       | Awesomer Event | marty@example.org, jane@example.org |
     And I open the application
-    When I click "Openen" for event "Awesome Event"
+    When I click the card for event "Awesome Event"
     Then I am seeing a page with 3 guests
 
   Scenario: Add first article

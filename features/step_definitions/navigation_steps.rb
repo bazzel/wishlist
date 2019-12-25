@@ -16,9 +16,14 @@ When('I navigate to the events page') do
   visit '/events'
 end
 
+When('I click the card for event {string}') do |event_title|
+  find('.card', text: event_title).click
+  @current_event = Event.find_by(title: event_title)
+end
+
 Given('I open the article list for {string}') do |event_title|
   step 'I open the application'
-  step %(I click "Openen" for event "#{event_title}")
+  step %(I click the card for event "#{event_title}")
 end
 
 Then("I'm being redirected to the sign in page") do

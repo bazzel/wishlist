@@ -24,4 +24,16 @@ class EventDecorator < ApplicationDecorator
       Guest.model_name.human.pluralize(users_count, I18n.locale).downcase
     ].join(' ')
   end
+
+  def hamburger_menu
+    h.hamburger_menu do
+      h.concat link_to_edit
+    end
+  end
+
+  def link_to_edit
+    return unless h.policy(object).edit?
+
+    h.link_to I18n.t('helpers.submit.edit'), h.edit_event_path(object), class: 'dropdown-item'
+  end
 end
