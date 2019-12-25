@@ -29,14 +29,8 @@ RSpec.describe EventsController, type: :controller do
 
     let!(:event) { create :event, users: [current_user] }
 
-    it 'returns a success response' do
-      do_get
-      expect(response).to be_successful
-    end
-
-    it 'decorates the event' do
-      do_get
-      expect(assigns(:event)).to be_decorated
+    it 'redirects to /events/:slug/articles' do
+      expect(do_get).to redirect_to(event_articles_path(event.to_param))
     end
   end
 

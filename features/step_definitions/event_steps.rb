@@ -50,10 +50,8 @@ end
 Then('I am viewing the event') do
   event = Event.last
 
-  expect(current_path).to eql(event_path(event))
+  expect(current_path).to eql(event_articles_path(event))
   expect(page).to have_content(event.title)
-
-  expect(page).to have_content('1 gast')
   expect(page).to have_content(@current_user_email)
 end
 

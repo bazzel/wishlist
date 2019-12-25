@@ -1,6 +1,13 @@
 - content_for(:floating_action_button) { @event.floating_action_button }
 
-h1= @event.title
+.d-flex.justify-content-between.align-items-center
+  h1= @event.title
+
+  .dropdown
+    button(class=sm_rnd_btn_class aria={ expanded: false, haspopup: true } data-toggle='dropdown' type='button')
+      = material_icon('more_vert', tooltipify(t('helpers.options')))
+    .dropdown-menu.menu.dropdown-menu-right
+      = link_to t('.edit'), edit_event_path(@event), class: 'dropdown-item'
 
 - @event.guests.each do |guest|
   h2.h5.px-4.mt-2

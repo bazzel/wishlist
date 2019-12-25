@@ -2,7 +2,8 @@
 
 #:nodoc:
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show edit update]
+  before_action :set_event, only: %i[edit update]
+  skip_before_action :require_sign_in, only: :show
 
   after_action :verify_policy_scoped, only: :index
 
@@ -15,7 +16,10 @@ class EventsController < ApplicationController
     @event.users << current_user
   end
 
-  def show; end
+  def show
+    skip_authorization
+    redirect_to event_articles_path(params[:slug])
+  end
 
   def edit; end
 

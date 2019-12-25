@@ -66,11 +66,11 @@ nl:
       cancel: &cancel_event_creation 'Maken van %{subject} annuleren'
     edit:
       cancel: &cancel_event_changes 'Afspraakswijzigingen annuleren'
-    show:
-      edit: *edit
     create:
       cancel: *cancel_event_creation
   articles:
+    index:
+      edit: *edit
     new:
       title: 'Een nieuw %{subject} toevoegen'
       cancel: 'Maken van %{subject} annuleren'
