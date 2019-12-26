@@ -233,4 +233,21 @@ RSpec.describe ArticlesController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    def do_delete
+      delete :destroy, xhr: true, params: {slug: article.to_param}, session: valid_session
+    end
+
+    it 'destroys the requested article' do
+      expect {
+        do_delete
+      }.to change(Article, :count).by(-1)
+    end
+
+    it 'renders destroy' do
+      do_delete
+      expect(response).to render_template(:destroy)
+    end
+  end
 end

@@ -3,7 +3,7 @@
 #:nodoc:
 class ArticlesController < ApplicationController
   before_action :set_event, only: %i[index new create]
-  before_action :set_article, only: %i[edit update]
+  before_action :set_article, only: %i[edit update destroy]
 
   def index; end
 
@@ -34,14 +34,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article.destroy
+
+    flash.now.notice = t('.notice', title: @article.title)
+  end
+
   private
 
   def set_event
     @event = authorize(
       Event
-        .includes(:stores, guests: %i[user articles])
-        .find_by(slug: params[:event_slug])
-        .decorate,
+      .includes(:stores, guests: %i[user articles])
+      .find_by(slug: params[:event_slug])
+      .decorate,
       :show?
     )
     @store_names = @event.store_names

@@ -16,4 +16,8 @@ class ArticlePolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def destroy?
+    update?
+  end
 end

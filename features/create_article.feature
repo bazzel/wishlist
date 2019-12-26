@@ -33,4 +33,4 @@ Feature: Creating an article
     And I add the stores "Hema, Blokker"
     And I click "Opslaan"
     Then I am seeing a page with 3 guests
-    And I am having 1 article
+    And I should see 1 article

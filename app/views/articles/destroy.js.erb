@@ -1,0 +1,12 @@
+var elId       = '<%= @article.dom_id %>';
+var el         = document.getElementById(elId);
+var isExpanded = el.classList.contains('show');
+var restoreEl  = document.createElement('div');
+restoreEl.id   = elId;
+
+if (isExpanded)
+  restoreEl.classList.add('show');
+
+el.replaceWith(restoreEl);
+
+var snackbar = document.createElement('div');

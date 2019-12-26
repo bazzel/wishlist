@@ -11,7 +11,7 @@ Then('I am seeing a modal for adding a new article') do
   step %(I see a modal with "Een nieuw artikel toevoegen" as title)
 end
 
-Then('I am having {int} article(s)') do |articles_count|
+Then('I should see {int} article(s)') do |articles_count|
   # TODO: make this more specific
   expect(page).to have_css('.list-group-item', count: articles_count)
 end

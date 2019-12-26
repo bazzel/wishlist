@@ -77,6 +77,8 @@ nl:
     edit:
       title: '%{subject} bewerken'
       cancel: 'Artikelwijzigingen annuleren'
+    destroy:
+      title: '%{subject} verwijderen'
     create:
       notice: "Artikel '%{title}' is toegevoegd"
     update:

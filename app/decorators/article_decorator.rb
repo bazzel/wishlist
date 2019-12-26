@@ -18,4 +18,15 @@ class ArticleDecorator < ApplicationDecorator
 
     h.link_to body, url, html_options
   end
+
+  def link_to_destroy # rubocop:disable Metrics/AbcSize
+    return unless h.policy(object).destroy?
+
+    tooltip      = h.tooltipify(I18n.t('articles.destroy.title', subject: Article.model_name.human))
+    body         = h.material_icon('delete', tooltip)
+    url          = object
+    html_options = { method: :delete, remote: true, class: h.sm_rnd_btn_class, role: :button }
+
+    h.link_to body, url, html_options
+  end
 end
