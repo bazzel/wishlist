@@ -2,7 +2,7 @@
   = link_to event_articles_path(event), class: 'card-body list-group-item-action' do
     .card-title
       = event.title
-    p.card-text= event.number_of_users
+    p.card-text= event.number_of_guests
     ul
     - event.guests.each do |guest|
       li= guest.user.email

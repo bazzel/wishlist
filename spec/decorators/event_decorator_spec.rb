@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe EventDecorator do
   let(:decorator) { described_class.new(event) }
 
-  describe '#number_of_users' do
-    subject { decorator.number_of_users }
+  describe '#number_of_guests' do
+    subject { decorator.number_of_guests }
 
     context 'with one user' do
       let(:event) { create :event, users_count: 1 }

@@ -16,12 +16,12 @@ class EventDecorator < ApplicationDecorator
   #     end
   #   end
 
-  def number_of_users
-    users_count = users.size
+  def number_of_guests
+    guests_count = guests.size
 
     [
-      users_count,
-      Guest.model_name.human.pluralize(users_count, I18n.locale).downcase
+      guests_count,
+      Guest.model_name.human.pluralize(guests_count, I18n.locale).downcase
     ].join(' ')
   end
 
