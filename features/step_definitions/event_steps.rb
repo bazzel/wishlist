@@ -65,6 +65,7 @@ Then('I see a page with {int} event(s)') do |items_count|
       expect(page).to have_css('.card', count: items_count)
     end
   else
+    save_and_open_page
     expect(page).not_to have_css('.card-columns')
   end
 end

@@ -20,4 +20,8 @@ class ArticlePolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def restore?
+    update?
+  end
 end

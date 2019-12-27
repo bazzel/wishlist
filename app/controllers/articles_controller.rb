@@ -40,6 +40,12 @@ class ArticlesController < ApplicationController
     flash.now.notice = t('.notice', title: @article.title)
   end
 
+  def restore
+    @article = authorize Article.only_deleted.find_by(slug: params[:slug]).restore.decorate
+
+    flash.now.notice = t('.notice')
+  end
+
   private
 
   def set_event

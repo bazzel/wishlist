@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+When('I undo deleting the article') do
+  within('.snackbar.show') do
+    click_on('Undo')
+  end
+end
+
 Then("I'm in") do
   expect(current_path).to eql('/')
 

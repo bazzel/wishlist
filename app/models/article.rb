@@ -15,6 +15,8 @@ class Article < ApplicationRecord
 
   delegate :event, :user, to: :guest
 
+  acts_as_paranoid
+
   def store_names
     @store_names ||= stores.map(&:name)
   end

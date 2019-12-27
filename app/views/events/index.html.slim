@@ -2,5 +2,6 @@
 
 h1= Event.model_name.human.pluralize(I18n.locale)
 
-.card-columns
-  = render @events
+- if @events.any?
+  .card-columns
+    = render @events
