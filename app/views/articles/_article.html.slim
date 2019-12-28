@@ -1,4 +1,4 @@
-.expansion-panel.list-group-item.stretchable(id=article.dom_id data={ controller: 'expansion-panel', action: 'click->expansion-panel#toggle', target: "##{article.dom_id(:collapse)}" })
+.expansion-panel.list-group-item.stretchable(id=article.dom_id class=('show' if local_assigns[:show]) data={ controller: 'expansion-panel', action: 'click->expansion-panel#toggle', target: "##{article.dom_id(:collapse)}" })
   .expansion-panel-toggler.collapsed.position-relative
     .media-body
       .row.collapsed-show
@@ -11,6 +11,6 @@
     .actions.d-flex.align-items-center.mr-1.position-absolute(data={ toggle: 'no-collapse' })
       = article.link_to_destroy
       = article.link_to_edit
-  .collapse(id=article.dom_id(:collapse) data={ parent: "##{parent}" })
+  .collapse(id=article.dom_id(:collapse) class=('show' if local_assigns[:show]) data={ parent: "##{parent}" })
     .expansion-panel-body
       = simple_format article.description
