@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2019_12_26_131902) do
     t.decimal "price", precision: 7, scale: 2
     t.string "description", limit: 1024
     t.string "slug"
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_articles_on_deleted_at"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_articles_on_discarded_at"
     t.index ["guest_id"], name: "index_articles_on_guest_id"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end

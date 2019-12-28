@@ -3,5 +3,5 @@
 #:nodoc:
 class GuestDecorator < ApplicationDecorator
   delegate_all
-  decorates_association :articles
+  decorates_association :articles, scope: :kept
 end

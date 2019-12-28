@@ -34,7 +34,7 @@ gem 'simple_form'
 gem 'draper'
 gem 'actionview-component'
 gem 'pundit'
-gem 'paranoia'
+gem 'discard'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

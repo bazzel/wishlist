@@ -17,19 +17,5 @@ export default class extends Controller {
         },
       },
     });
-
-    // Plugin changes the markup so we manually
-    // need to tell the element to float the label correctly
-    tagify
-      .on('add', () => {
-        this.floatLabel();
-      })
-      .on('remove', () => {
-        this.floatLabel();
-      });
-  }
-
-  floatLabel() {
-    $(this.element).floatinglabel();
   }
 }

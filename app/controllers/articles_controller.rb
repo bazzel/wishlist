@@ -3,7 +3,7 @@
 #:nodoc:
 class ArticlesController < ApplicationController
   before_action :set_event, only: %i[index new create]
-  before_action :set_article, only: %i[edit update destroy]
+  before_action :set_article, only: %i[edit update destroy restore]
 
   def index; end
 
@@ -35,13 +35,13 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
+    @article.discard
 
     flash.now.notice = t('.notice', title: @article.title)
   end
 
   def restore
-    @article = authorize Article.only_deleted.find_by(slug: params[:slug]).restore.decorate
+    @article.undiscard
 
     flash.now.notice = t('.notice')
   end

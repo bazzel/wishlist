@@ -3,6 +3,7 @@
 #:nodoc:
 class Article < ApplicationRecord
   include Sluggable
+  include Discard::Model
 
   has_and_belongs_to_many :stores # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :guest
@@ -14,8 +15,6 @@ class Article < ApplicationRecord
   before_validation :set_stores
 
   delegate :event, :user, to: :guest
-
-  acts_as_paranoid
 
   def store_names
     @store_names ||= stores.map(&:name)

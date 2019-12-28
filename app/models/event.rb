@@ -38,11 +38,11 @@ class Event < ApplicationRecord
   def set_users
     return if @guest_emails.blank?
 
-    self.users = @guest_emails.map do |email|
+    self.guests = @guest_emails.map do |email|
       user = User.find_or_initialize_by(email: email)
 
       if user.valid?
-        user
+        Guest.find_or_initialize_by(user: user, event: self)
       else
         errors.add(:guest_emails, :invalid)
         return nil
