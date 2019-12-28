@@ -5,6 +5,7 @@ nl:
       edit: &edit 'Bewerken'
       show: 'Openen'
       cancel: 'Annuleren'
+      undo: 'Ongedaan maken'
       user:
         create: 'Aanmelden'
       session:
@@ -79,10 +80,13 @@ nl:
       cancel: 'Artikelwijzigingen annuleren'
     destroy:
       title: '%{subject} verwijderen'
+      notice: "Artikel '%{title}' is verwijderd."
+    restore:
+      notice: "Artikel '%{title}' is hersteld."
     create:
-      notice: "Artikel '%{title}' is toegevoegd"
+      notice: "Artikel '%{title}' is toegevoegd."
     update:
-      notice: "Artikel '%{title}' is bijgewerkt"
+      notice: "Artikel '%{title}' is bijgewerkt."
   # mailers:
   sessions_mailer:
     magic_link:

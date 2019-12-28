@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
   def restore
     @article.undiscard
 
-    flash.now.notice = t('.notice')
+    flash.now.notice = t('.notice', title: @article.title)
   end
 
   private
