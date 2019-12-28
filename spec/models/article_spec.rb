@@ -22,8 +22,6 @@ RSpec.describe Article, type: :model do
     it { expect(instance.user).to eql(instance.guest.user) }
   end
 
-  it { is_expected.to act_as_paranoid }
-
   describe '#slug' do
     subject(:instance) { create :article }
 

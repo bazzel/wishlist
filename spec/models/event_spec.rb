@@ -65,7 +65,7 @@ RSpec.describe Event, type: :model do
         it 'adds the users as guests' do
           instance.guest_emails = [{ value: user.email }].to_json
           instance.validate
-          expect(instance.users.size).to be(1)
+          expect(instance.guests.size).to be(1)
         end
       end
 
@@ -73,7 +73,7 @@ RSpec.describe Event, type: :model do
         it 'adds the users as guests' do
           instance.guest_emails = [{ value: 'jane.doe@example.org' }].to_json
           instance.validate
-          expect(instance.users.size).to be(1)
+          expect(instance.guests.size).to be(1)
         end
       end
 
@@ -95,7 +95,7 @@ RSpec.describe Event, type: :model do
       it 'adds the users as guests' do
         instance.guest_emails = 'jane.doe@example.org, marty@example.org'
         instance.validate
-        expect(instance.users.size).to be(2)
+        expect(instance.guests.size).to be(2)
       end
     end
   end
