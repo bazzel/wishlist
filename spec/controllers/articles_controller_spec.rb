@@ -242,7 +242,7 @@ RSpec.describe ArticlesController, type: :controller do
     it 'destroys the requested article' do
       expect do
         do_delete
-      end.to change(Article, :count).by(-1)
+      end.to change(Article.kept, :count).by(-1)
     end
 
     it 'renders destroy' do
