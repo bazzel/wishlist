@@ -36,4 +36,10 @@
   &:hover .actions {
     visibility: visible;
   }
+
+  .expansion-panel-toggler:hover {
+    .actions {
+      background-color: $expansion-panel-bg-active;
+    }
+  }
 }

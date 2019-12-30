@@ -2,13 +2,17 @@
   .expansion-panel-toggler.collapsed.position-relative
     .media-body
       .row.collapsed-show
-        .col-sm-4.text-truncate= article.title
+        .col-sm-3.text-truncate= article.title
         .col-sm-2= number_to_currency(article.price)
         .col-sm= article.store_names.to_sentence
+        .col-sm-1
+          .text-primary.text-right
+            = material_icon('gavel')
       .row.collapsed-hide
         .col-11
           h3.mb-0= article.title
-    .actions.d-flex.align-items-center.mr-1.position-absolute(data={ toggle: 'no-collapse' })
+    .actions.d-flex.align-items-center.mr-1.pl-3.position-absolute(data={ toggle: 'no-collapse' })
+      = link_to material_icon('gavel'), article_claims_path(article), method: :post, class: sm_rnd_btn_class, role: :button
       = article.link_to_destroy
       = article.link_to_edit
   .collapse(id=article.dom_id(:collapse) class=('show' if local_assigns[:show]) data={ parent: "##{parent}" })

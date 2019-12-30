@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_131902) do
+ActiveRecord::Schema.define(version: 2019_12_30_101432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2019_12_26_131902) do
     t.string "description", limit: 1024
     t.string "slug"
     t.datetime "discarded_at"
+    t.bigint "claimant_id"
+    t.index ["claimant_id"], name: "index_articles_on_claimant_id"
     t.index ["discarded_at"], name: "index_articles_on_discarded_at"
     t.index ["guest_id"], name: "index_articles_on_guest_id"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_131902) do
   end
 
   add_foreign_key "articles", "guests"
+  add_foreign_key "articles", "guests", column: "claimant_id"
   add_foreign_key "guests", "events"
   add_foreign_key "guests", "users"
 end

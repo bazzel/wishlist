@@ -7,6 +7,7 @@ class Article < ApplicationRecord
 
   has_and_belongs_to_many :stores # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :guest
+  belongs_to :claimant, class_name: 'Guest', foreign_key: "claimant_id", optional: true
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :description, length: { maximum: 2**10 }
@@ -24,6 +25,10 @@ class Article < ApplicationRecord
     @store_names = parse_tagify_json(value)
   rescue StandardError
     @store_names = value.split(/,\s*/)
+  end
+
+  def claim(claimant)
+    update claimant: claimant
   end
 
   private
