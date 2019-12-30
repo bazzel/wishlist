@@ -4,7 +4,7 @@ Feature: Delete an article
   Scenario: Delete an article
     Given I signed in
     And I have created the following articles:
-      | title           | event         |
+      | title         | event         |
       | Lorem Article | Awesome Event |
       | Ipsum Article | Awesome Event |
       | Dolor Article | Awesome Event |
@@ -13,11 +13,10 @@ Feature: Delete an article
     When I click the "delete" button
     Then I should see 2 articles
 
-  @wip
   Scenario: Undo deleting an article
     Given I signed in
     And I have created the following articles:
-      | title           | event         |
+      | title         | event         |
       | Lorem Article | Awesome Event |
       | Ipsum Article | Awesome Event |
       | Dolor Article | Awesome Event |

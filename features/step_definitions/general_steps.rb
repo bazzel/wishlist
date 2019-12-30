@@ -2,7 +2,7 @@
 
 When('I undo deleting the article') do
   within('.snackbar.show') do
-    click_on('Undo')
+    click_on('Ongedaan maken')
   end
 end
 
