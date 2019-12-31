@@ -6,7 +6,7 @@ Given('I am adding a new article for {string}') do |event_title|
   step %(I click the "add_shopping_cart" button)
 end
 
-Given('I have created the following articles:') do |table|
+Given('I have created the following article(s):') do |table|
   current_user = User.find_by(email: @current_user_email)
 
   table.hashes.each do |hash|
@@ -67,6 +67,15 @@ Then("I should not have claimed article {string}") do |article_title|
 
   within('.list-group-item', text: article_title) do
     expect(page).to have_css('i.material-icons', text: 'gavel')
+    expect(page).not_to have_css('a.active i.material-icons', text: 'gavel')
+  end
+end
+
+Then("I should not be able to claim the article {string}") do |article_title|
+  step %(I hover over the article "#{article_title}")
+
+  within('.list-group-item', text: article_title) do
+    expect(page).not_to have_css('a:not(.active) i.material-icons', text: 'gavel')
     expect(page).not_to have_css('a.active i.material-icons', text: 'gavel')
   end
 end

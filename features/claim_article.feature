@@ -29,7 +29,18 @@ Feature: Claim article
     When I click the "gavel" button
     Then I should not have claimed article "Awesome Article"
 
+  @wip
   Scenario: Creator cannot claim his own article
+    Given I signed in
+    And I have created the following events:
+      | title         |
+      | Awesome Event |
+    And I have created the following article:
+      | title           | event         |
+      | Awesome Article | Awesome Event |
+    When I open the article list for "Awesome Event"
+    Then I should not be able to claim the article "Awesome Article"
+
   Scenario: User cannot claim an article already claimed
   Scenario: Creator can still delete claimed article
   Scenario: Article becomes available when claimant is deleted
