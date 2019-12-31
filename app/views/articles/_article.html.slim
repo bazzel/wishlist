@@ -5,14 +5,18 @@
         .col-sm-3.text-truncate= article.title
         .col-sm-2= number_to_currency(article.price)
         .col-sm= article.store_names.to_sentence
-        .col-sm-1
-          .text-primary.text-right
-            = material_icon('gavel')
+        .col-sm-1.pr-2
+          - if article.claimed_by?(current_user)
+            .text-primary.text-right
+              = material_icon('gavel')
       .row.collapsed-hide
         .col-11
           h3.mb-0= article.title
     .actions.d-flex.align-items-center.mr-1.pl-3.position-absolute(data={ toggle: 'no-collapse' })
-      = link_to material_icon('gavel'), article_claims_path(article), method: :post, class: sm_rnd_btn_class, role: :button
+      - if article.guest.user != current_user && !article.claimed_by?(current_user)
+        = link_to material_icon('gavel'), claim_article_path(article), method: :post, class: sm_rnd_btn_class, role: :button
+      - if article.claimed_by?(current_user)
+        = link_to material_icon('gavel'), disclaim_article_path(article), method: :delete, class: sm_rnd_btn_class('active'), role: :button
       = article.link_to_destroy
       = article.link_to_edit
   .collapse(id=article.dom_id(:collapse) class=('show' if local_assigns[:show]) data={ parent: "##{parent}" })

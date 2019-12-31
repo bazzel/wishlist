@@ -14,17 +14,17 @@ class ClaimsController < ApplicationController
   end
 
   def destroy
-    @article.discard
+    event = @article.event
 
-    flash.now.notice = t('.notice', title: @article.title)
+    if @article.disclaim
+      redirect_to_index(event)
+    end
   end
 
   private
 
   def set_article
-    @article = authorize Article
-               .find_by(slug: params[:article_slug])
-               .decorate
+    @article = authorize(Article.find_by(slug: params[:slug]), policy_class: ClaimPolicy).decorate
   end
 
   def redirect_to_index(event)

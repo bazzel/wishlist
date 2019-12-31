@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :events, param: :slug do
     resources :articles, param: :slug, shallow: true do
       post 'restore', on: :member
-      resources :claims, param: :slug, shallow: true, only: %i(create destroy)
+      post 'claim', on: :member, to: 'claims#create'
+      delete 'disclaim', on: :member, to: 'claims#destroy'
     end
   end
 

@@ -40,8 +40,10 @@ Given('I hover over the article {string}') do |article_title|
 end
 
 Then("I should have claimed article {string}") do |article_title|
+  step %(I hover over the article "#{article_title}")
+
   within('.list-group-item', text: article_title) do
-    expect(page).to have_css('i.material-icons', text: 'gavel')
+    expect(page).to have_css('a.active i.material-icons', text: 'gavel')
   end
 end
 
@@ -53,4 +55,18 @@ end
 Then('I should see {int} article(s)') do |articles_count|
   # TODO: make this more specific
   expect(page).to have_css('.list-group-item', count: articles_count)
+end
+
+Given("I have claimed the article {string}") do |article_title|
+  step %(I hover over the article "#{article_title}")
+  step %(I click the "gavel" button)
+end
+
+Then("I should not have claimed article {string}") do |article_title|
+  step %(I hover over the article "#{article_title}")
+
+  within('.list-group-item', text: article_title) do
+    expect(page).to have_css('i.material-icons', text: 'gavel')
+    expect(page).not_to have_css('a.active i.material-icons', text: 'gavel')
+  end
 end

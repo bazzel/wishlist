@@ -31,6 +31,14 @@ class Article < ApplicationRecord
     update claimant: claimant
   end
 
+  def disclaim
+    update claimant: nil
+  end
+
+  def claimed_by?(user)
+    claimant&.user == user
+  end
+
   private
 
   def parse_tagify_json(value)
