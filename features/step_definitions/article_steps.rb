@@ -72,6 +72,14 @@ Then("I should not have claimed article {string}") do |article_title|
   end
 end
 
+Then("I should be able to claim the article {string}") do |article_title|
+  step %(I hover over the article "#{article_title}")
+
+  within('.list-group-item', text: article_title) do
+    expect(page).to have_css('a:not(.active) i.material-icons', text: 'gavel')
+  end
+end
+
 Then("I should not be able to claim the article {string}") do |article_title|
   step %(I hover over the article "#{article_title}")
 
