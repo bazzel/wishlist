@@ -17,27 +17,30 @@ RSpec.describe ArticleDecorator do
     context 'when not claimed' do
       context 'when I view my article' do
         subject            { html }
+
         let(:current_user) { me_user }
 
         it                 { is_expected.to be_nil }
       end
 
       context 'when other view my article' do
-        let(:current_user) { you_user }
         subject           { Capybara.string html }
+
+        let(:current_user) { you_user }
 
         it { is_expected.to have_css('a.btn-float.btn-sm.shadow-none[href$="/claim"][data-method="post"][role="button"]') }
         it { is_expected.to have_css('a i.material-icons', text: 'gavel') }
       end
     end
 
-    context 'claimed' do
+    context 'when claimed' do
       let(:he_user) { create(:guest, event: article.event).user }
 
       before        { article.claim(you_guest) }
 
       context 'when I view my article' do
         subject            { html }
+
         let(:current_user) { me_user }
 
         it                 { is_expected.to be_nil }
@@ -45,6 +48,7 @@ RSpec.describe ArticleDecorator do
 
       context 'when you view my article' do
         subject            { Capybara.string html }
+
         let(:current_user) { you_user }
 
         it { is_expected.to have_css('a.btn-float.btn-sm.shadow-none.active[href$="/disclaim"][data-method="delete"][role="button"]') }
@@ -53,6 +57,7 @@ RSpec.describe ArticleDecorator do
 
       context 'when he views my article' do
         subject            { html }
+
         let(:current_user) { he_user }
 
         it                 { is_expected.to be_nil }

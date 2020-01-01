@@ -76,10 +76,10 @@ nl:
       title: 'Een nieuw %{subject} toevoegen'
       cancel: 'Maken van %{subject} annuleren'
     edit:
-      title: '%{subject} bewerken'
+      title: 'Artikel bewerken'
       cancel: 'Artikelwijzigingen annuleren'
     destroy:
-      title: '%{subject} verwijderen'
+      title: 'Artikel verwijderen'
       notice: "Artikel '%{title}' is verwijderd."
     restore:
       notice: "Artikel '%{title}' is hersteld."
@@ -87,6 +87,13 @@ nl:
       notice: "Artikel '%{title}' is toegevoegd."
     update:
       notice: "Artikel '%{title}' is bijgewerkt."
+  claims:
+    create:
+      title: 'Ik ga dit artikel kopen'
+      notice: 'Je hebt aangegeven dat je dit artikel wilt gaan kopen. Anderen kunnen dit artikel niet meer kiezen.'
+    destroy:
+      title: 'Iemand anders mag dit artikel kopen'
+      notice: 'Je hebt aangegeven dit artikel niet meer te willen kopen. Anderen kunnen dit artikel weer kiezen.'
   # mailers:
   sessions_mailer:
     magic_link:

@@ -11,21 +11,20 @@ class ArticleDecorator < ApplicationDecorator
   def link_to_edit # rubocop:disable Metrics/AbcSize
     return unless h.policy(object).edit?
 
-    tooltip      = h.tooltipify(I18n.t('articles.edit.title', subject: Article.model_name.human))
+    tooltip      = h.tooltipify(I18n.t('articles.edit.title'))
     body         = h.material_icon('create', tooltip)
     url          = h.edit_article_path(object)
-    html_options = { remote: true, class: h.sm_rnd_btn_class, role: :button }
 
-    h.link_to body, url, html_options
+    h.link_to body, url, default_html_options
   end
 
-  def link_to_destroy # rubocop:disable Metrics/AbcSize
+  def link_to_destroy
     return unless h.policy(object).destroy?
 
-    tooltip      = h.tooltipify(I18n.t('articles.destroy.title', subject: Article.model_name.human))
+    tooltip      = h.tooltipify(I18n.t('articles.destroy.title'))
     body         = h.material_icon('delete', tooltip)
     url          = object
-    html_options = { method: :delete, remote: true, class: h.sm_rnd_btn_class, role: :button }
+    html_options = default_html_options.merge(method: :delete)
 
     h.link_to body, url, html_options
   end
@@ -34,15 +33,27 @@ class ArticleDecorator < ApplicationDecorator
     link_to_claim || link_to_disclaim
   end
 
+  def disclaim?
+    claim_policy.destroy?
+  end
+
   private
+
+  def default_html_options(class_name = nil)
+    {
+      remote: true,
+      class: h.sm_rnd_btn_class(class_name),
+      role: :button
+    }
+  end
 
   def link_to_claim
     return unless claim_policy.create?
 
-    tooltip      = h.tooltipify(I18n.t('claims.create.title', subject: Article.model_name.human))
+    tooltip      = h.tooltipify(I18n.t('claims.create.title'))
     body         = h.material_icon('gavel', tooltip)
     url          = h.claim_article_path(object)
-    html_options = { method: :post, remote: true, class: h.sm_rnd_btn_class, role: :button }
+    html_options = default_html_options.merge(method: :post)
 
     h.link_to body, url, html_options
   end
@@ -50,10 +61,10 @@ class ArticleDecorator < ApplicationDecorator
   def link_to_disclaim
     return unless claim_policy.destroy?
 
-    tooltip      = h.tooltipify(I18n.t('claims.destroy.title', subject: Article.model_name.human))
+    tooltip      = h.tooltipify(I18n.t('claims.destroy.title'))
     body         = h.material_icon('gavel', tooltip)
     url          = h.disclaim_article_path(object)
-    html_options = { method: :delete, remote: true, class: h.sm_rnd_btn_class('active'), role: :button }
+    html_options = default_html_options('active').merge(method: :delete)
 
     h.link_to body, url, html_options
   end

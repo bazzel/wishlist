@@ -11,11 +11,13 @@ class ClaimsController < ApplicationController
     @article.claim(claimant)
 
     flash.now.notice = t('.notice', title: @article.title)
+    render 'articles/restore'
   end
 
   def destroy
     @article.disclaim
     flash.now.notice = t('.notice', title: @article.title)
+    render 'articles/restore'
   end
 
   private

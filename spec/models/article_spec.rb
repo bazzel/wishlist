@@ -8,11 +8,8 @@ RSpec.describe Article, type: :model do
     it { is_expected.to validate_length_of(:title).is_at_most(255) }
     it { is_expected.to validate_length_of(:description).is_at_most(1024) }
     it { is_expected.to validate_numericality_of(:price).allow_nil.is_greater_than(0).is_less_than(100_000) }
-    it { is_expected.to belong_to(:claimant)
-      .class_name('Guest')
-      .with_foreign_key('claimant_id')
-      .optional
-      .inverse_of(:claims) }
+
+    it { is_expected.to belong_to(:claimant).class_name('Guest').with_foreign_key('claimant_id').optional.inverse_of(:claims) }
   end
 
   describe 'associations' do
@@ -79,26 +76,26 @@ RSpec.describe Article, type: :model do
   end
 
   describe '#claim' do
-    subject        { instance.claim(claimant) }
+    subject(:claim) { instance.claim(claimant) }
 
     let(:instance) { create :article }
     let(:claimant) { create(:guest, event: instance.event) }
 
     it do
-      expect { subject }.to change(instance, :claimant).from(nil).to(claimant)
+      expect { claim }.to change(instance, :claimant).from(nil).to(claimant)
     end
   end
 
   describe '#disclaim' do
+    subject(:disclaim) { instance.disclaim }
+
     before         { instance.claim(claimant) }
-    subject        { instance.disclaim }
 
     let(:instance) { create :article }
     let(:claimant) { create(:guest, event: instance.event) }
 
     it do
-      expect { subject }.to change(instance, :claimant).from(claimant).to(nil)
+      expect { disclaim }.to change(instance, :claimant).from(claimant).to(nil)
     end
-
   end
 end
