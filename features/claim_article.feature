@@ -51,6 +51,18 @@ Feature: Claim article
     And I open the article list for "Awesome Event"
     Then I should not be able to claim the article "Awesome Article"
 
-  @wip
   Scenario: Creator can still delete claimed article
+    Given I signed in
+    And I have created the following events:
+      | title         | guest_emails      |
+      | Awesome Event | marty@example.org |
+    And I have created the following article:
+      | title           | event         | claimant_email    |
+      | Awesome Article | Awesome Event | marty@example.org |
+    And I open the article list for "Awesome Event"
+    And I hover over the article "Awesome Article"
+    When I click the "delete" button
+    Then I should see 0 articles
+
+  @wip
   Scenario: Article becomes available when claimant is deleted

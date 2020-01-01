@@ -17,9 +17,9 @@ Given('I have created the following article(s):') do |table|
       event.save
     end
 
-    guest = event.guests.find_by(user: current_user)
+    hash['guest']    = event.guests.find_by(user: current_user)
+    hash['claimant'] = event.guests.find_by(user: User.find_by(email: hash.delete('claimant_email')))
 
-    hash[:guest] = guest
     create(:article, hash)
   end
 end
