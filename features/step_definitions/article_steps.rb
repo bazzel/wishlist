@@ -26,10 +26,11 @@ end
 
 Given("the following articles:") do |table|
   table.hashes.each do |hash|
-    event        = Event.find_by(title: hash.delete('event'))
-    user         = User.find_by(email: hash.delete('guest_email'))
-    guest        = event.guests.find_by(user: user)
-    hash[:guest] = guest
+    event            = Event.find_by(title: hash.delete('event'))
+    guest            = event.guests.find_by(user: User.find_by(email: hash.delete('guest_email')))
+    hash['guest']    = guest
+    claimant         = event.guests.find_by(user: User.find_by(email: hash.delete('claimant_email')))
+    hash['claimant'] = claimant
 
     create(:article, hash)
   end

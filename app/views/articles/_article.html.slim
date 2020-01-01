@@ -13,7 +13,7 @@
         .col-11
           h3.mb-0= article.title
     .actions.d-flex.align-items-center.mr-1.pl-3.position-absolute(data={ toggle: 'no-collapse' })
-      - if article.guest.user != current_user && !article.claimed_by?(current_user)
+      - if article.guest.user != current_user && !article.claimant
         = link_to material_icon('gavel'), claim_article_path(article), method: :post, class: sm_rnd_btn_class, role: :button
       - if article.claimed_by?(current_user)
         = link_to material_icon('gavel'), disclaim_article_path(article), method: :delete, class: sm_rnd_btn_class('active'), role: :button
