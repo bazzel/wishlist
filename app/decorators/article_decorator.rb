@@ -29,4 +29,36 @@ class ArticleDecorator < ApplicationDecorator
 
     h.link_to body, url, html_options
   end
+
+  def link_to_claim_or_disclaim
+    link_to_claim || link_to_disclaim
+  end
+
+  private
+
+  def link_to_claim
+    return unless claim_policy.create?
+
+    tooltip      = h.tooltipify(I18n.t('claims.create.title', subject: Article.model_name.human))
+    body         = h.material_icon('gavel', tooltip)
+    url          = h.claim_article_path(object)
+    html_options = { method: :post, remote: true, class: h.sm_rnd_btn_class, role: :button }
+
+    h.link_to body, url, html_options
+  end
+
+  def link_to_disclaim
+    return unless claim_policy.destroy?
+
+    tooltip      = h.tooltipify(I18n.t('claims.destroy.title', subject: Article.model_name.human))
+    body         = h.material_icon('gavel', tooltip)
+    url          = h.disclaim_article_path(object)
+    html_options = { method: :delete, remote: true, class: h.sm_rnd_btn_class('active'), role: :button }
+
+    h.link_to body, url, html_options
+  end
+
+  def claim_policy
+    ClaimPolicy.new(h.current_user, object)
+  end
 end

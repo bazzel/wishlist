@@ -18,18 +18,22 @@ Given('I have created the following article(s):') do |table|
     end
 
     hash['guest']    = event.guests.find_by(user: current_user)
-    hash['claimant'] = event.guests.find_by(user: User.find_by(email: hash.delete('claimant_email')))
+    claimant_email   = hash.delete('claimant_email')
+    claimant         = event.guests.find_by(user: User.find_by(email: claimant_email))
+    hash['claimant'] = claimant
 
     create(:article, hash)
   end
 end
 
-Given("the following articles:") do |table|
+Given('the following articles:') do |table|
   table.hashes.each do |hash|
     event            = Event.find_by(title: hash.delete('event'))
-    guest            = event.guests.find_by(user: User.find_by(email: hash.delete('guest_email')))
+    guest_email      = hash.delete('guest_email')
+    guest            = event.guests.find_by(user: User.find_by(email: guest_email))
     hash['guest']    = guest
-    claimant         = event.guests.find_by(user: User.find_by(email: hash.delete('claimant_email')))
+    claimant_email   = hash.delete('claimant_email')
+    claimant         = event.guests.find_by(user: User.find_by(email: claimant_email))
     hash['claimant'] = claimant
 
     create(:article, hash)
@@ -40,7 +44,7 @@ Given('I hover over the article {string}') do |article_title|
   find('.list-group-item', text: article_title).hover
 end
 
-Then("I should have claimed article {string}") do |article_title|
+Then('I should have claimed article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
 
   within('.list-group-item', text: article_title) do
@@ -58,12 +62,12 @@ Then('I should see {int} article(s)') do |articles_count|
   expect(page).to have_css('.list-group-item', count: articles_count)
 end
 
-Given("I have claimed the article {string}") do |article_title|
+Given('I have claimed the article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
   step %(I click the "gavel" button)
 end
 
-Then("I should not have claimed article {string}") do |article_title|
+Then('I should not have claimed article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
 
   within('.list-group-item', text: article_title) do
@@ -72,7 +76,7 @@ Then("I should not have claimed article {string}") do |article_title|
   end
 end
 
-Then("I should be able to claim the article {string}") do |article_title|
+Then('I should be able to claim the article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
 
   within('.list-group-item', text: article_title) do
@@ -80,7 +84,7 @@ Then("I should be able to claim the article {string}") do |article_title|
   end
 end
 
-Then("I should not be able to claim the article {string}") do |article_title|
+Then('I should not be able to claim the article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
 
   within('.list-group-item', text: article_title) do

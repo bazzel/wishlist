@@ -8,26 +8,19 @@ class ClaimsController < ApplicationController
     event = @article.event
     claimant = event.guests.find_by(user: current_user)
 
-    if @article.claim(claimant)
-      redirect_to_index(event)
-    end
+    @article.claim(claimant)
+
+    flash.now.notice = t('.notice', title: @article.title)
   end
 
   def destroy
-    event = @article.event
-
-    if @article.disclaim
-      redirect_to_index(event)
-    end
+    @article.disclaim
+    flash.now.notice = t('.notice', title: @article.title)
   end
 
   private
 
   def set_article
     @article = authorize(Article.find_by(slug: params[:slug]), policy_class: ClaimPolicy).decorate
-  end
-
-  def redirect_to_index(event)
-    redirect_to event_articles_path(event), notice: t('.notice', title: @article.title)
   end
 end

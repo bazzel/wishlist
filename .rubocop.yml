@@ -25,12 +25,13 @@ AllCops:
     - 'vendor/bundle/**/*'
     - 'Gemfile'
     - 'Rakefile'
+    - 'Guardfile'
 
 Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
   Exclude:
     - spec/**/*.rb

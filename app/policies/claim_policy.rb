@@ -10,10 +10,10 @@ class ClaimPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    !(record.guest.user == user || record.claimant)
   end
 
   def destroy?
-    true
+    record.claimed_by?(user)
   end
 end

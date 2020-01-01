@@ -7,7 +7,10 @@ class Article < ApplicationRecord
 
   has_and_belongs_to_many :stores # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :guest
-  belongs_to :claimant, class_name: 'Guest', foreign_key: "claimant_id", optional: true
+  belongs_to :claimant, class_name: 'Guest',
+                        foreign_key: 'claimant_id',
+                        optional: true,
+                        inverse_of: :claims
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :description, length: { maximum: 2**10 }
