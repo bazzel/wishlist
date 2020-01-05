@@ -22,13 +22,11 @@ When('I click the card for event {string}') do |event_title|
 end
 
 When('I click the thumbtack button') do
-  begin
-    find('a i.fas.fa-thumbtack', visible: false).click
-  rescue => e
-    # Travis related...
-    p e, 'Try again with a little cheating... :('
-    find('a i.fas.fa-thumbtack', visible: false).click
-  end
+  find('a i.fas.fa-thumbtack', visible: false).click
+rescue StandardError => e
+  # Travis related...
+  p e, 'Try again with a little cheating... :('
+  find('a i.fas.fa-thumbtack', visible: false).click
 end
 
 Given('I open the article list for {string}') do |event_title|
