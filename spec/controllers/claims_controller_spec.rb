@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ClaimsController, type: :controller do
@@ -9,7 +11,7 @@ RSpec.describe ClaimsController, type: :controller do
 
   describe 'POST #create' do
     let(:guest)      { event.guests.first }
-    let(:attributes) {{ slug: article.to_param }}
+    let(:attributes) { { slug: article.to_param } }
 
     def do_post(attributes)
       post :create, xhr: true, params: attributes, session: valid_session
@@ -36,12 +38,11 @@ RSpec.describe ClaimsController, type: :controller do
     before           { article.claim(guest) }
 
     let(:guest)      { event.guests.last }
-    let(:attributes) {{ slug: article.to_param }}
+    let(:attributes) { { slug: article.to_param } }
 
     def do_delete(attributes)
       delete :destroy, xhr: true, params: attributes, session: valid_session
     end
-
 
     it 'assigns the article for the view' do
       do_delete attributes
@@ -59,5 +60,4 @@ RSpec.describe ClaimsController, type: :controller do
       expect(do_delete(attributes)).to render_template('articles/restore')
     end
   end
-
 end
