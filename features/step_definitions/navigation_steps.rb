@@ -22,7 +22,6 @@ When('I click the card for event {string}') do |event_title|
 end
 
 When('I click the thumbtack button') do
-  sleep 0.1
   find('a i.fas.fa-thumbtack').click
 end
 
