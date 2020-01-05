@@ -11,7 +11,7 @@ Feature: Claim article
       | Awesome Article | Awesome Event | marty@example.org |
     And I open the article list for "Awesome Event"
     And I hover over the article "Awesome Article"
-    When I click the "gavel" button
+    When I click the thumbtack button
     Then I should have claimed article "Awesome Article"
 
   Scenario: Unclaim article
@@ -25,8 +25,7 @@ Feature: Claim article
     And I open the article list for "Awesome Event"
     And I have claimed the article "Awesome Article"
     And I open the article list for "Awesome Event"
-    And I hover over the article "Awesome Article"
-    When I click the "gavel" button
+    When I click the thumbtack button
     Then I should not have claimed article "Awesome Article"
 
   Scenario: Creator cannot claim his own article

@@ -51,25 +51,31 @@ class ArticleDecorator < ApplicationDecorator
     return unless claim_policy.create?
 
     tooltip      = h.tooltipify(I18n.t('claims.create.title'))
-    body         = h.material_icon('gavel', tooltip)
     url          = h.claim_article_path(object)
-    html_options = default_html_options.merge(method: :post)
+    html_options = default_html_options
+    html_options.merge!(method: :post)
+    html_options.merge!(tooltip)
 
-    h.link_to body, url, html_options
+    h.link_to thumbtack_icon, url, html_options
   end
 
   def link_to_disclaim
     return unless claim_policy.destroy?
 
     tooltip      = h.tooltipify(I18n.t('claims.destroy.title'))
-    body         = h.material_icon('gavel', tooltip)
     url          = h.disclaim_article_path(object)
-    html_options = default_html_options('active').merge(method: :delete)
+    html_options = default_html_options('text-primary visible')
+    html_options.merge!(method: :delete)
+    html_options.merge!(tooltip)
 
-    h.link_to body, url, html_options
+    h.link_to thumbtack_icon, url, html_options
   end
 
   def claim_policy
     ClaimPolicy.new(h.current_user, object)
+  end
+
+  def thumbtack_icon
+    h.fa_icon('fas', 'thumbtack')
   end
 end

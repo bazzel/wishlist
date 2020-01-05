@@ -21,6 +21,10 @@ When('I click the card for event {string}') do |event_title|
   @current_event = Event.find_by(title: event_title)
 end
 
+When('I click the thumbtack button') do
+  find('a i.fas.fa-thumbtack').click
+end
+
 Given('I open the article list for {string}') do |event_title|
   step 'I open the application'
   step %(I click the card for event "#{event_title}")

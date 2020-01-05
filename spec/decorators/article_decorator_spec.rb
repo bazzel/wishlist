@@ -29,7 +29,7 @@ RSpec.describe ArticleDecorator do
         let(:current_user) { you_user }
 
         it { is_expected.to have_css('a.btn-float.btn-sm.shadow-none[href$="/claim"][data-method="post"][role="button"]') }
-        it { is_expected.to have_css('a i.material-icons', text: 'gavel') }
+        it { is_expected.to have_css('a i.fas.fa-thumbtack', text: nil) }
       end
     end
 
@@ -51,8 +51,8 @@ RSpec.describe ArticleDecorator do
 
         let(:current_user) { you_user }
 
-        it { is_expected.to have_css('a.btn-float.btn-sm.shadow-none.active[href$="/disclaim"][data-method="delete"][role="button"]') }
-        it { is_expected.to have_css('a i.material-icons', text: 'gavel') }
+        it { is_expected.to have_css('a.btn-float.btn-sm.shadow-none[href$="/disclaim"][data-method="delete"][role="button"]') }
+        it { is_expected.to have_css('a i.fas.fa-thumbtack', text: nil) }
       end
 
       context 'when he views my article' do

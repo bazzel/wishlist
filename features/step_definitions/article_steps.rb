@@ -44,12 +44,12 @@ Given('I hover over the article {string}') do |article_title|
   find('.list-group-item', text: article_title).hover
 end
 
-Then('I should have claimed article {string}') do |article_title|
-  step %(I hover over the article "#{article_title}")
+Then('I should have claimed article {string}') do |_article_title|
+  expect(page).to have_css('a.visible i.fas.fa-thumbtack')
+end
 
-  within('.list-group-item', text: article_title) do
-    expect(page).to have_css('a.active i.material-icons', text: 'gavel')
-  end
+Then('I should not have claimed article {string}') do |_article_title|
+  expect(page).not_to have_css('a.visible i.fas.fa-thumbtack')
 end
 
 Then('I am seeing a modal for adding a new article') do
@@ -64,23 +64,14 @@ end
 
 Given('I have claimed the article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
-  step %(I click the "gavel" button)
-end
-
-Then('I should not have claimed article {string}') do |article_title|
-  step %(I hover over the article "#{article_title}")
-
-  within('.list-group-item', text: article_title) do
-    expect(page).to have_css('i.material-icons', text: 'gavel')
-    expect(page).not_to have_css('a.active i.material-icons', text: 'gavel')
-  end
+  step %(I click the thumbtack button)
 end
 
 Then('I should be able to claim the article {string}') do |article_title|
   step %(I hover over the article "#{article_title}")
 
   within('.list-group-item', text: article_title) do
-    expect(page).to have_css('a:not(.active) i.material-icons', text: 'gavel')
+    expect(page).to have_css('a:not(.visible) i.fas.fa-thumbtack')
   end
 end
 

@@ -2,13 +2,10 @@
   .expansion-panel-toggler.collapsed.position-relative
     .media-body
       .row.collapsed-show
+        - # Keep 1 column for action buttons
         .col-sm-3.text-truncate= article.title
         .col-sm-2= number_to_currency(article.price)
-        .col-sm= article.store_names.to_sentence
-        .col-sm-1.pr-2.text-right
-          - if article.disclaim?
-            small.text-primary
-              = material_icon('gavel')
+        .col-sm-6= article.store_names.to_sentence
       .row.collapsed-hide
         .col-11
           h3.mb-0= article.title
