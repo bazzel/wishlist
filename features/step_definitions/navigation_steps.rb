@@ -22,7 +22,7 @@ When('I click the card for event {string}') do |event_title|
 end
 
 When('I click the thumbtack button') do
-  find('a i.fas.fa-thumbtack').click
+  find('a i.fas.fa-thumbtack', visible: false).click
 end
 
 Given('I open the article list for {string}') do |event_title|
