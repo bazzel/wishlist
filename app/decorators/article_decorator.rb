@@ -33,16 +33,11 @@ class ArticleDecorator < ApplicationDecorator
     link_to_claim || link_to_disclaim
   end
 
-  def disclaim?
-    claim_policy.destroy?
-  end
-
-  def claim?
-    claim_policy.create?
-  end
-
-  def claimed?(current_user)
-    !claim? && !(current_user == guest.user)
+  # Returns true if article is claimed by another user.
+  # If the user views his own article than the method
+  # *always* returns false.
+  def claimed?
+    !claim? && h.current_user != guest.user
   end
 
   private
@@ -56,7 +51,7 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def link_to_claim
-    return unless claim_policy.create?
+    return unless claim?
 
     tooltip      = h.tooltipify(I18n.t('claims.create.title'))
     url          = h.claim_article_path(object)
@@ -68,7 +63,7 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   def link_to_disclaim
-    return unless claim_policy.destroy?
+    return unless disclaim?
 
     tooltip      = h.tooltipify(I18n.t('claims.destroy.title'))
     url          = h.disclaim_article_path(object)
@@ -77,6 +72,14 @@ class ArticleDecorator < ApplicationDecorator
     html_options.merge!(tooltip)
 
     h.link_to thumbtack_icon, url, html_options
+  end
+
+  def disclaim?
+    claim_policy.destroy?
+  end
+
+  def claim?
+    claim_policy.create?
   end
 
   def claim_policy

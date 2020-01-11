@@ -1,5 +1,5 @@
 .expansion-panel.list-group-item.stretchable(id=article.dom_id class=(local_assigns[:show] && 'show') data={ controller: 'expansion-panel', action: 'click->expansion-panel#toggle', target: "##{article.dom_id(:collapse)}" })
-  .expansion-panel-toggler.collapsed.position-relative(class=(article.claimed?(current_user) && 'text-muted'))
+  .expansion-panel-toggler.collapsed.position-relative(class=(article.claimed? && 'text-muted'))
     .media-body
       .row.collapsed-show
         - # Keep 1 column for action buttons

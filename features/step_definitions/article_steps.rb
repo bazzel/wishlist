@@ -84,13 +84,13 @@ Then('I should not be able to claim the article {string}') do |article_title|
   end
 end
 
-Then("I should see that article {string} is disabled") do |article_title|
+Then('I should see that article {string} is disabled') do |article_title|
   within('.list-group-item', text: article_title) do
     expect(page).to have_css('.text-muted')
   end
 end
 
-Then("I should not see that article {string} is disabled") do |article_title|
+Then('I should not see that article {string} is disabled') do |article_title|
   within('.list-group-item', text: article_title) do
     expect(page).not_to have_css('.text-muted')
   end
