@@ -40,13 +40,13 @@ RSpec.describe ArticleDecorator do
         it                 { is_expected.to be_falsy }
       end
 
-      context 'when you view my article' do
+      context 'when claimant views the article' do
         let(:current_user) { you_user }
 
-        it { is_expected.to be_truthy }
+        it { is_expected.to be_falsy }
       end
 
-      context 'when he views my article' do
+      context 'when other views the article' do
         let(:current_user) { he_user }
 
         it { is_expected.to be_truthy }

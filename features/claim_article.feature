@@ -13,6 +13,7 @@ Feature: Claim article
     And I hover over the article "Awesome Article"
     When I click the thumbtack button
     Then I should have claimed article "Awesome Article"
+    But I should not see that article "Awesome Article" is claimed
 
   Scenario: Unclaim article
     Given I signed in
@@ -38,7 +39,7 @@ Feature: Claim article
       | Awesome Article | Awesome Event |
     When I open the article list for "Awesome Event"
     Then I should not be able to claim the article "Awesome Article"
-    But I should not see that article "Awesome Article" is disabled
+    But I should not see that article "Awesome Article" is claimed
 
   Scenario: User cannot claim an article already claimed
     Given I signed in
@@ -50,7 +51,7 @@ Feature: Claim article
       | Awesome Article | Awesome Event | marty@example.org | jane@example.org |
     And I open the article list for "Awesome Event"
     Then I should not be able to claim the article "Awesome Article"
-    And I should see that article "Awesome Article" is disabled
+    And I should see that article "Awesome Article" is claimed
 
   Scenario: Creator can still delete claimed article
     Given I signed in

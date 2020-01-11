@@ -34,10 +34,10 @@ class ArticleDecorator < ApplicationDecorator
   end
 
   # Returns true if article is claimed by another user.
-  # If the user views his own article than the method
-  # *always* returns false.
+  # If the creator or the claimant views the article
+  # than the method *always* returns false.
   def claimed?
-    !claim? && h.current_user != guest.user
+    !(claim? || disclaim?) && h.current_user != guest.user
   end
 
   private
