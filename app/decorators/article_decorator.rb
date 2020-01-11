@@ -37,6 +37,14 @@ class ArticleDecorator < ApplicationDecorator
     claim_policy.destroy?
   end
 
+  def claim?
+    claim_policy.create?
+  end
+
+  def claimed?(current_user)
+    !claim? && !(current_user == guest.user)
+  end
+
   private
 
   def default_html_options(class_name = nil)
